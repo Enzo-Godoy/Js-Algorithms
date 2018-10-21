@@ -1,0 +1,83 @@
+Comments ins js. 
+A way to leave notes to us or other people whil will later need to figure out what that code does. 
+
+Single line (//) 
+Example: 
+  // This is a single line.
+
+
+Multiple line (/*   */) 
+Example: 
+   /* 
+   This 
+   is
+   a 
+   multiple line */
+
+
+   Js provides seven different data types wich are undefined, null, boolean, string, symbol, number and object.
+
+   Strigns are collections of characters.
+
+
+   Variables allow computers to store and manipulate data in a dynamic fashion.
+   They do this by using a "label" to point to the data rather thn using the data itself. 
+
+   We tell js to create or declara variable by putting the keyword var in forn of it, like so. 
+
+
+   example: 
+   var out;
+
+
+   //Remember to close all statements with semicolons. 
+
+   Variables names can be mede up of numbers, letters, and $ or _, but may not contain spaces or start with a number. 
+
+
+
+   We store a value in a variable with the assignment operater (=)it's a equal symbol. 
+
+   Assignment always goes from right to left. Everything to the right of the = operator is resolved before the value is assigned to the variable to the left of the operator. 
+
+
+   When js variables are declared, they have an initial value of undefined. If we do a mathematical operation on an undefined variavle our resul will be NaN wich means "Not a Number". If we concatenate a string with an undefined variable, we will get a literal string of "undefined". 
+
+   In Js all variables and functions are case sensitive. 
+
+   So, it's possible to have multiple distinct variables with the same name but different casing. 
+
+   *Best practice. 
+   Write variable names of Js in camelCase. 
+   In camelCase, multi-word variable names have the first word in lowercase and the first letter of each subsequent word is capitalized.
+
+
+   //Number is a data type inJs wich represents numeric data. 
+
+   Js uses the + symbol as addition operation when placed between two numbers. 
+
+
+   We can easily increment or add one to a variable eith the ++ operator.
+
+
+   i++; 
+
+   is the equivalent of 
+
+   i = i + 1; 
+
+
+   All we can decrement or decrease a variable by one with the -- operator. 
+
+   i--; 
+
+   is the  equivalent of: 
+
+   i = i - 1;
+
+
+   Decimal numbers are sometimes referred to as floating point numbers or floats. 
+
+   Not all real numbers can accurately be represented in floating point. 
+
+     
