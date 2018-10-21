@@ -1,2 +1,2 @@
 # Js-Algorithms
-Js curse of free code camp complete exercises and comments abouts.
+Js course of free code camp complete exercises and comments abouts.
