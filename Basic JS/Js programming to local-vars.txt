@@ -1,0 +1,56 @@
+Manipulate arrays with shift() 
+pop() always removes the last element of an array. And shift() removes the first element instead of the last. 
+
+Not only we can shift elements off of the beginning of an array, we can also unshift elements to the beginning of an array i.e add elements in front of the array. 
+
+.unshift() works exactly like .push(), but instead of adding the element at the end of the array, unshift() adds the element at the beginning of the array.
+
+In Js, we can divide up our code into reusable parts called functions. 
+
+Example:
+function functionName() {
+	console.log("Hello World");
+}
+
+We can call or invoke this function by using its name followed by parentheses, like this : 
+functionName(); 
+
+Each time the function is called it will print out the message "Hello world" on the dev console. All of the code between the curly braces will be executed every time the function is called. 
+
+
+Parameters are variables that act as placeholders for the values that are to be input to a function when it's called. When a function is defined, it's tipicallt defined along with one or more parameters. the actual values are input (or "passed") into a function when it's called are known as arguments.
+
+Example 
+//A function with two parameters, param1 and param2: 
+function testFun(param1, param2) {
+	console.log(param1,param2);
+}
+
+The we can call testFun : 
+
+testFun ("Itszanie","Gosbach"); 
+
+//We have passed two argument . Note that we could call testFun  again with different argument and the parameters would take on the value of the new arguments. 
+
+
+Is Js , scope refers to the visibility of variables. Variables wich are defined outside of a function block have Global Scope. This means, they can be seen everywhere in our Js code. 
+
+Variables wich are used without the var keyword are automatically created in the global scope. 
+This can create unintend consequences elsewhere in our code or when running a function again. 
+ // Always we declare our variable with var. 
+
+ Local Scope and Functions 
+ Variables wich are declared within a function, as well as the function parameters have local scope. 
+   //That means, they are only visible within that function.
+
+   Example 
+   function myTest() { 
+   var loc="foo";
+   consoloe.log(loc);
+   }
+myTest(); ------------ // logs "foo"
+console.log(loc);   -- // loc is not defined . 
+
+So, like loc is not defined outside of the function it's value doesn't exist, 
+
+
