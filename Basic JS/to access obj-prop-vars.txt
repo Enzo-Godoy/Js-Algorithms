@@ -1,0 +1,130 @@
+The functions is executed from top to bottom so us will want to be careful of what statement comes first. 
+
+When we have many options to choose, we can use the Switch Statements. 
+
+A Switch statement tests a value and can have many case statements wich define various possible values. 
+
+
+Example 
+switch (num) { 
+ case value1:
+  statement1; 
+ break; 
+ case value2:
+  statement2; 
+ break; 
+ case valueN:
+  statementN; 
+ break; 
+
+ }
+
+ case values are tested witch strict equality (===). The break telss Js to stop executing statements. If the break is omitted, the next statement will be executed. 
+
+
+ //In a switch statement us may not be able to specify all possible values as case statements. 
+ Instead, we can add the default statement wich will be executed if no matching case statements are found. 
+
+ //If the break statements is omitted from a switch statement's case, the following case statement(s) are executed until a break is encountered. If we have multiple inputs with the same output, we can represent them in a switch statement like this: 
+
+ switch(val) {
+ case 1:
+ case 2:
+ case 3:
+ 	result = "1, 2, 0r 3"; 
+ 	break;
+ case 4; 
+ 	result = "4 alone";
+ }
+
+ //Where cases for 1, 2 and 3 will all produce the same result.
+
+ If we  have many options to choose from, a switch statement can be easier to write than many chained if/else if statements. 
+
+ //All comparison operators return a boolean true or false value.
+
+ Since === returns true or false, we can return the result of the comparison.
+
+ When a return statement is reached, the execution of the current function stops and control returns to the calling location.
+
+ Example 
+ function myFun () { 
+ 	console.log("Hello");
+ 	return "World";
+ 	console.log("Bye Bye");
+ }
+ myFun ();
+
+  // The above outputs "Hello" to the console, returns "World", but "byebye" is never output, because the functions exits at the return statement. 
+
+
+  Objects are acees and modify by their properties. 
+
+  Objects are useful for storing data in a structured way, and can represent real world objects.
+
+
+  Example with car: 
+
+  var car = {
+  "marca" = "Legend", 
+  "tails" = 4, 
+  "kilometers" = 400,
+  }
+ 
+However we can also use numbers as properties. 
+We can even omit the quotes for single-word string properties, as follows: 
+
+var anotherObject = { 
+ make : "Ford",
+ 5: "five",
+ "model" : "focus"
+ };
+
+ However, if our object has any non-string properties, Js will automatically typecast them as strings. 
+
+
+ There are two ways to access the properties of an object: dot notation (.) and bracketnotatio ([]), similar to an array. 
+
+ Dot notation is what we use when we know the name of the property we're trying to access ahead of time. 
+
+
+ Example of using dot notation(.)
+  //To read an object's property.
+
+ var myObj = { 
+  prop1: " val1",
+  prop2: "val2",
+  };
+  var prop1val = myObj.prop1; //val1
+  var prop2val = myObj.prop2; //val2
+
+The second way to access the properties of an object is brackets notation ([]). If the property of the object we are trying to access has a space in its name, we will need to use bracket notation.
+
+Also we can still use bracket notation on object properties without spaces. 
+
+Example of using bracket notation. 
+ //To read an object's property. 
+
+ var myObj = {
+ 	"Space Name":"Kirk",
+ 	"More Space":"Spock",
+ 	"NoSpace":"USS Enterprise"
+ };
+ myObj["Space Name"];  //Kirk
+ myObj["More Space"];  //Spock
+ myObj["NoSpace"];  //USS Enterprise
+ 
+
+ //Note that property names with spaces in them must be in quotes (single or double).
+
+ Another use of bracket notation on objects is to access a property wich is stored as the value of a variable.
+ This can be very useful for iterating through an object's properties or when accessing a lookup table. 
+
+ Example of using a variable to access a property 
+ var dogs = { 
+   Fido: "Mutt", Hunter: "Doberman", Snoopie : "Beagle"};
+   var myDog = "Hunter";
+   var myBreed = dogs[myDog];
+   console.log(myBreed);   // "Doberman"
+
+   
