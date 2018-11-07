@@ -1,0 +1,155 @@
+Builing Js Objects. 
+Objects are similar to arrays, except that instead of using 
+indexes to access and modify their data, we can access the data in objects through what are called properties.
+
+//Objects are useful for storing data in a structured way, and can represent real world objects.
+ -- We can even omit the quotes for single-word string properties.
+   If our object has any non-string properties, Js will automatically typecast them as strings.
+
+   The properties of an object are not separted by ';' ---> just by ','.
+
+   example
+   var anotherObject = {
+  make: "Ford",
+  5: "five",
+  "model": "focus"
+};
+
+
+Also are open and Close by :
+{  //Open
+};   //Close.
+
+There are two ways to access the properties of an object : 
+
+dot notation(.)  ------ >  myObj.property;
+bracket notation([]) ---> myObj[property]; 
+
+Dot notation is use when we know the name of the property we're trying to access ahead of time. Also on prperty or object without spaces.
+
+
+Brackets notation, the property names with spaces
+in them must be in quotes (single or double).
+
+example : 
+
+myObj["Property worm"];
+
+
+Another use of bracket notation on objects is to access a property wich is stored as the value of a variable.
+
+(This it's useful for iterating through an object's or when accessing a lookup table)
+
+
+var myObj {
+	"Animal" : "Lion",
+	"tails" : 3,
+	"Heads" : 4
+}; 
+
+var animal = "Animal";
+myObj[animal]; //Show us "Lion" from property "Animal" --> myObj.
+
+Another way we can use this concept is when the property's name is collected dynamically during the program execution. 
+
+Example :
+
+var someObj { 
+    propName : "John"
+}
+
+function propPrefix(str) {
+	var s = "prop";
+	return s + str;
+}
+
+var someProp = propPrefix("Name");  
+     ----// someProp now holds the value 'propName'.
+
+console.log(someObj[someProp]);  //"John"
+
+Note that we don't use quotes around the variable name when usin it to access the propert beacuse we are using the value of the variable, not the name . 
+  Dynamical value against ¿static value?.
+
+
+  After we've created a Js object, we can update its properties at any time just like we would update any other variable. 
+
+  We can use either dot or bracket notation to update.
+
+  var ourDog = {
+  	"name":"Camper",
+  	"legs": 4,
+  	"tails": 1,
+  	"friends" : ["everything!"]
+  };
+
+  Update his object's name property : 
+
+  ourDog.name = "Happy Camper";
+
+  ourDog["name"] = "Happy Camper"; 
+
+  //Now we get ourDog.name --> "Happy Camper"
+
+  ------------------------------------------------------
+
+  We can add new properties to existingjs the same way we would
+  modify them 
+
+  Example.
+
+  ourDog.bark = "bow-wow";
+
+  or
+
+  ourDog["bark"]= "bow-wow";
+
+
+  We can also delete properties from objects ..
+
+  delete ourDog.bark ; 
+
+  delete ourDog["bark"];
+
+  Objects can be thought of as a key/value storage, like a dictionary. If we have tabular data,
+  we can use an object to "lookup" values rather than a switch statement or an if/else chain
+  //This is most useful when we know that our input data is limited to a certain range.
+
+
+  Example of a simple reverse alphabet lookup.
+  var alpha = {
+   1 : "Z",
+   2 : "Y",
+   3 : "X",
+   ...
+   24: "C",
+   25: "B",
+   26: "A"
+  };
+
+  alpha[2]; 
+  alpha[26]:
+
+  var value = 2;
+  var valueX= 26;
+  console.log(alpha[value] + alpha[26]);
+
+
+  Sometimes it's useful to check if the property of a given object exists or not.
+   We can use .hasOwnProperty(propname)
+  //Method of object to determine if that object has the given property name - returns True/False if the property is found or not.
+
+  
+
+
+
+
+
+
+
+
+
+
+var someObj = {
+	
+}
