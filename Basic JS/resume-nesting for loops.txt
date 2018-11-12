@@ -1,0 +1,43 @@
+Iterate with js For Loops 
+I can run the same code multiple times by using a loop. 
+
+foor loop - Because it runs "for" a specific number of times. 
+
+For Loops are declared with three optional expressions separated by semicolons : 
+
+for ([initialization]; [condition]; [ final-expression])
+
+The initialization statement is executed one time only before the loop starts. It's typically used to define and setup our loop variable.
+
+The condition statement is evaluated at the beggining of every loop iteration and will continue as long as it evaluates to true. 
+When condition is false at the start of the iteration, the loop will stop executing. 
+   This means if condition starts as false, our loop will never execute. 
+
+The final-expression is executed at the end of each loop iteration, prior to the next condition check and is usually used to increment or decrement our loop counter. 
+
+
+A common task in js is to iterate through the contents of an array. One way to do that is with a for loop. 
+
+
+Arrays have zero-based numbering, wich means the last index of the array is length -1. 
+
+If we have a multi-dimensional array, we can use the same logic as the prior waypoint to loop through both the array and any sub-arrays .
+
+Example : 
+
+var arr = [ 
+	[1,2],
+	[3,4],
+	[5,6] 
+];
+
+for  (var i= 0 ; i < 0 ; arr.length; i++) {
+	for(var j = 0; j < arr[i].length; j++) {
+	console.log(arr[i][j]);
+	}
+}
+
+//This output each sub-element in arr one at a time. 
+  -- > Note that for the inner loop, we are checking  .length of arr[i], since arr[i] is itself an array.
+
+  
