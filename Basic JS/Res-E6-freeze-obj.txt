@@ -1,0 +1,135 @@
+E6 Challenges.
+ECMAScript is a standardized version of Javascript.
+As all major browser and Javascript-runtime follow this specification. 
+
+ //The term ECMAScript is interchangeable with the term JavaScript.
+
+ Js is an evolving programming lenguage. As features are added and revisions are made, new versions of the lenguage are released for use by developers.
+
+ECAMScript 6 (ES6), released in 2015.
+
+Some functions : 
+
+* Arrow functions.
+* Modules.
+* Promises.
+* Generators.
+* let and const.
+
+Not all browsers support E6S features. If we use ES6 in our own projects, we may need to use a program (transpiler) to convert our ES6 code into ES5 until browsers support ES6.
+
+Differences Between the var and ley Keywords. 
+
+With declaring variables with the var keywords is that we can overwrite variable declarations without an error. 
+ // Because this behavior does not throw an error, searching and fixing bugs becomes more difficult.
+
+ A new keyword called let was introduced in ES6 to solve this potential issue with the var keyword. 
+ So unlike var, when usning let, a variable with the same name can only be declared once.
+
+ "use strict". This enables strict mode, wich catches common coding mistakes and "unsafe" actions. 
+
+ example 
+
+ "use strict";
+ x = 3.14;  // throws an error because x is not declared.
+
+ When we declare a variable with the var keyword, it's declared globally, or locally if declared inside a function. 
+
+ The let keywords behaves similarly, but with some extra features. When we declare a variable with the let keyword inside a block, statement, or expression its scope is limited to that black, statement, or expression.
+
+
+-------------------------------
+ For example : 
+ var numArray = []; 
+ for (var i = 0; i < 3; i++){
+ 	numArray.push(i);
+ }
+ console.log(numArray); 
+ // returns [0 ,1 , 2]
+ console.log(i)
+ // returns 3 
+-------------------------------
+
+
+With the var keyword, i is declared globally. So when i++ is executed, it updates the global variable. This code is similar to 
+the following : 
+
+-------------------------------
+var numArray = []; 
+var i;
+for ( i = 0; i < 3; i++) { 
+	numArray.push(i);
+}
+console.log(numArray); 
+//returns [0, 1, 2]
+console.log(i); 
+//returns 3.
+
+-------------------------------
+
+//This behavior will cause problems is we've to create a function and store it for later use inside a for loop that uses the i variable. This is because the stored  functions will always refer to the value of the updated global i variable . 
+
+-------------------------------
+
+var printNumTwo; 
+for ( var i= 0 ; i < 3; i++){
+	if(i === 2) { 
+		printNumTwo = function ();
+		return i;
+	 };
+   }
+}
+console.log(printNumTwo()); 
+// returns 3.
+
+
+As we can see, printNumTwo() prints 3 and not 2. This is because the value assigned to i was updated and the printNumTwo() returns the global i and not the value i has when the function was created in the for loop. 
+//The let keyword does not follow this behavior. 
+
+
+The difference between how var and let keywords assign scopre to the declared variable.
+When programming a function it's often better to use different variable names to avoid confusuion..
+
+
+Res :  
+The stored function will always refer to the value of the updated global i variable.
+
+let is not the only new way to declare variables. In ES6, we can also declare variables using the 'const' keyword.
+
+'const' has all the awesome features that 'let' has, with the added bonus that variables declared using const are read-only. 
+	//They are a constant value, wich means that once a variable is assigned with const, it cannot be reassigned.
+
+* A common practice when naming constants is to use all uppercase letters, with words separated by an underscore.
+
+
+It's important to understand that objects (including arrays and functions) assigned to a variable using const are still mutable. 
+
+Example : 
+
+"use strict"
+const S = [5, 6, 7];
+S = [1, 2, 3];   //Throws error, trying to assign a const
+S[2] = 45;  //works just as it ould with an array declared with
+var or let 
+console.log(s);  //returns [5, 6, 45]
+
+It's important to understant that objects(including arrays and functions) assigned to a variable using const are still multiple. 
+
+const declaration alone doesn't really protect our data from mutation. To ensure our data doesn't change, Js provides a function 'Object.freeze'   
+
+Once the object is frozen, we can no longer add, update or delete properties from it. Any attempt at changing the object will be rejected without an error. 
+
+Example
+
+let obj= {
+	name :"FreeCodeCamp", 
+	review:"Awesome"
+};
+Object.freeze(obj);
+obj.review = "bad"; //Will be ignored. Mutation not allowed. 
+obj.newProp = "Test" //Will be ignored. Mutation not allowed.
+console.log(obj);
+//  { name:"FreeCodeCamp", revies: "Awesome"}
+
+
+
