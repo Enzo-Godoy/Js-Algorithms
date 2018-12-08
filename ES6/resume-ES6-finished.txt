@@ -1,0 +1,205 @@
+ES6 adds easily defining object literals. 
+
+ES6 eliminate the redundancy of having to write x:x. You  can simply write x once, and it will be converted to x:x (or something equivalent) under the hood. 
+
+Example : 
+
+const getMousePosition = (x, y ) =>({
+	x:x,
+	y:y
+}); 
+
+to 
+
+const getMousePosition = (x, y) => ({ x, y}); 
+
+---------------------------------------------------
+
+When we define functions within objects in ES5, we have to use the keyword 'function' as follows : 
+
+const person = { 
+	name: "Taylor",
+	sayHello: function () {
+	return `Hello! My name is ${this.name}.`;
+   }
+}; 
+
+In ES6 We can remove the function keyword and colon altogether when defining functions in objects. 
+
+const person = { 
+	name:"Taylor",
+	sayHello() {
+	    return `Hello! My name is ${this.name}.`;
+   }
+};
+
+
+--------------------------------------------------------------
+
+ES6 provides a new syntax to help create objects, using the keyword class. 
+This is to be noted, that the class syntax is just a syntax, and not a full fledged classs bases implementation of object
+oriented paradigm, unlike in lank like Java, or Python, or Ruby etc. 
+
+In ES5 we usually define a constructor function and use the new keyword to instantiate an object. 
+
+var SpaceShuttle = function (targetPlantet) { 
+	this.targetPlanet = targetPlanet;
+}
+
+var zeus = new SpaceShuttle ('Jupiter'); 
+
+
+The class syntax simply replaces the constructor functions creation : 
+
+var SpaceShuttle {
+  constructor (targetPlantet) { 
+	this.targetPlanet = targetPlanet;
+ }
+}
+
+
+-- The classs syntax simply replaces the constructor function creation. 
+
+(The class keyword declares a new function, and a constructor was added, wich would be invoked when new is called - to create a new object). 
+
+
+
+var zeus = new SpaceShuttle ('Jupiter'); 
+
+
+------------------------------------------------------------
+
+We can obtain values from an object, and set a values of a property within an object. 
+
+These are classically called getters and setters. 
+
+Getter functions are meant to simply return (get) the value of an object's private variable to the user without the user directly accessing the private variable.
+
+
+Setter functions are meant to modify (set) the value of an object's private variable based on the value passed into the setter function. This change could involve calculations, or even overwriting the previous values completely. 
+
+
+class Book { 
+  constructor (author) {
+   this._author = author; 
+  }
+
+        // getter 
+    get writer () { 
+    return this._author; 
+    }
+
+
+       //setter 
+    set writer (updatedAuthor) { 
+    this._author = updatedAuthor; 
+    } 
+}
+
+const lol = new Book ('anonymous'); 
+console.log(lol.writer);  //anonymous 
+lol.writer = 'wut' ;
+console.log(lol.writer);  //wut
+
+
+
+-- Important the syntax we are using to invoke the getter and setter - as if they are not even functions .  --
+
+  (They hide internal implementation details)
+
+---------------------------------------------------
+
+Differences between import and require. 
+
+non-browser features. import, and the statements we introduce in the rest od these lessons, won't work on a browser directly. However, we can use various tools to create code out of this to make it work in browser. 
+
+
+In the past, the function require() would be used to import the functions and code in external files and modules. 
+
+
+ES6 gives us a very handy tool known as import. With it, we can choose wich parts of a module or file to load into a given file, saving time and memory. 
+
+
+example { functionToImport} from "function_array_functions"
+
+-- The whitespace surrounding the function iside the curly braces is a best practice - It makes it easier to read the import statement. 
+
+
+Also we can describe it as : 
+
+import { function } from "file_path_goes_here"
+//We can also import variables the same way. 
+
+In most cases, the file path requires a ./ before it : otherwise : node will look in the node_modules directory first tryng to load it as a dependency. 
+
+When we want some code -a function, or a variable - to be usable in another file, we must export it in order to import it into another file. Like import, export is a non-browser feature. 
+
+A named export. 
+With this, we can import any code we export into another file with the import syntac we learned in the last lesson. 
+
+const capitalizeString = (string) => { 
+  return string.charAt (0).toUpperCase () + string.slice(1);
+}
+export { capitalizeString } //Hoe to export functions. 
+export const foo = "bar";  // How to export variables. 
+
+
+--- Alternatively, if we would like to compact all our export statements into one line, we can take this approach : 
+
+const capitalzeString = (string) => { 
+  return string.charAt(0).toUpperCase () + string.slice(1);
+}
+const foo = "bar"; 
+export { capitalizeString, foo}
+
+
+
+Suppose we hace a file that we wish to import all of its contents into the current file. This can be done with the import* syntax. 
+
+An example where the contents of a file named "math_functions" are imported into a file in the same directory 
+
+import * as myMathModule from "math_functions";
+myMathModule.add(2,3); 
+myMathModule.subtract(5,3); 
+
+Breking down that code. 
+
+import * as object_name from "file_path" 
+object_name.imported_functions
+
+We may use any name following the import * as portion of the statement. In order to utilize this method, it requires an object that receives the imported values. From here, we will use the dot notation to call our imported values. 
+
+
+In the export lesson, we learned about the syntax referred to as a named export. This allowed us to make multiple functions and variables available for use in other files. 
+
+Theres is another export syntax we neeed to know, (export default). 
+
+Usually will use this syntax if only one values is being exported from a file, It's also create a fallback value for a file or module. 
+
+A quick example of ecport default. 
+
+
+---------------------------------------
+
+export default function add(x,y) {
+     return x + y; 
+} 
+
+Note : Since export default is used to declare a fallback value for a module or file, we can only have one value be a default export in each module or file. Additionally, we cannot use export default with var, let or const. 
+
+
+It's important to nothe that, to import a default export, we neeed to use a different import syntac. 
+
+In the following example, we have  functions, add, that is the default export of a file "math_functions" 
+
+Here is hoe to impor it 
+
+import add from "math_functions"; 
+add(5, 4) ;  //Will return 9 
+
+The syntac differes in on key place - The imported value, add, is not surrounded by curly braces, {}. Unlike exported values, the primary method of importing a default export is to simply write the value's name after import. 
+
+}
+
+
+}
