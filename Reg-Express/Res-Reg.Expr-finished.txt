@@ -1,0 +1,106 @@
+Recall that we use the plus sign + to look for one or more characters and the asterisk * to look for zero or more characters. There are convenient but sometimes we want to match a certain range of patters. 
+
+We can specify the lower and upper number of patterns with quantity specifiers. 
+Quantizy specifiers are used with curly brackets ({and}).
+We put two numbers between the curly brackets - for the lower and upper of patterns .
+ 
+For example. to match only the letter a appearing between 3 and 5 times in the string "ah". Our regex would be /a{3,5}h/
+
+let A4 = "aaaah";
+let A2 = "aah";
+let multipleA = /a{3,5}h/; 
+multipleA.test(A4);  //Returns true
+multipleA.test(A2);  //Returns false.
+
+We can specify the lower and upper number of patters with quantity specifiers using curly brackets. Sometimes we only want to specify the lower number of patterns with no upper limit. 
+
+To only specify the lower number of patterns, keep the first number follower by a comma. 
+
+let A4 = "haaaah"; 
+let A2 = "haah"; 
+let A100 = "h" + "a".repeat(100) + "h"; 
+let multipleA = /ha{3,}h/; 
+multipleA.test(A4);    // Returns true 
+multipleA.test(A2);    //Returns false 
+multipleA.test(A100);  //Returns true
+
+
+To specify a certain number of patterns, just have that one number between the curly brackets. 
+
+Sometimes the patterns we want to search for may have parts of it that may or may not exist. However, it may be important to check for them nonetheless. 
+
+We can specify  the possible existence of an element with a question mark, ?. This checks for zero or one of the preceding element.
+
+  We can think of this symbol as saying the previous element is optional. 
+
+  example 
+
+  let american = "color"; 
+  let british = "colour"; 
+  let rainbowRegex = /colou?r/; 
+  rainbowRegex.test(american);   //Returns true 
+  rainbowRegex.test(british);    //Returns true
+
+
+ Lookaheads are patterns that tell Js to look-ahead in our string to check for patterns further along. This can be useful when we want to search for multiple patterns over the same string. 
+
+ There are two kinds of lookaheads : positive lookahead and negative lookahead 
+
+ A positive lookahead (?=...) //Require .. par that is  matched. 
+ A negative lookahead (?!..)  //Require .. par that is not  matched.
+
+ A pos lkhd will look to make sure the element in the search pattern is there, but won't actually match it. 
+
+ A neg. lkhd will look to make sure the element in the search pattern is not there. 
+ The rest of the pattern is returned if the negative lkhd part is not present. 
+
+
+ let quit = "qu"; 
+ let noquit = "qt"; 
+ let quRegex = /q(?=u)/; 
+ let qRegex = /q(?!u)/; 
+ quit.match(quRegex);  //Returns ["q"]
+ noquit.match(qRegex); //Returns ["q"]
+
+ A more practical use of lookheads is to check two or more patterns in one string. Here is a (naively)simple password checker that looks for between 3 and 6 characters and at least one number. 
+
+ let password = "abc123";
+ let checkPass = /(?=\w{3,6})(?=\D*\d)/; 
+ checkPass.test(password);  //Returns true 
+
+
+ Some patterns we search for will occur multiple times in a string. It is wasteful to manually repeat that regex. There is a a better way to specify when we have multiple repeat substrings in our string. 
+
+ We can search for rpereat substrings using capture groups. Parenthereses, (and), are used to find repreat substrings. We put the regex of the pattern that will repeat in between the parentheses. 
+
+ To specify where that repeat string will appear, we use a backslask (\) and them a number. 
+ This number starts at 1 and increases with each additiontal capture group we use. And example would be \1 to match the first group. 
+
+ Using the .match method on a string will return an array with the string it matches,along with its capture group. 
+
+ example : 
+ ------------------------
+
+ let repeatStr = "regex regex"; 
+ let repeatRegex = (\w+)\s\1/; 
+ repeatRegex.test(repeatStr);  //Returns true 
+ repeatStr.match(repeatRegex);   //Returns ["regex regex", "regex"]
+
+
+ Searching is useful. We cam make searching een more powerful when it also changes (or replaces) the text you match. 
+
+ We can search and replace text in a string using .replace() on a string. The inputs for .replace() is first the regex pattern we want to search for. The second paramaeter is the string to replace the match or a function to do something. 
+
+ let wrongText = "The sky is silver"; 
+ let silverRegex = /silver/; 
+ wrongText.replace(silverRegrex, "blue"); 
+ //Returns "The sky is blue"
+
+ We can also access capture groups in the replacement string with dollar signs ( $ ). 
+
+ "Code Camp".replace(/(\w+)\s(\w+)\s. $2 $1'); 
+ // Returns "Camp Code"
+
+ Sometimes whitespace characters around strings are not wanted but are there. Typical processing of strings is to remove the whitespace at the start and end of it. 
+
+ 
