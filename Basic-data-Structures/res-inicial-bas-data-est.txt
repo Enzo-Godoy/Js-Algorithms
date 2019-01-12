@@ -1,0 +1,179 @@
+A one-dimensiaonal array, meaning it only has one level, or that it does not have any other arrays nested within it. 
+
+ //Notice it contains booleans, strings and numbers, among other valid Js data types : 
+
+ let simpleArray = ['one', 2, 'three', true, false, undefined, null]; 
+ console.log(simpleArray.length)
+
+   -- All array's have a length property, wich as shown above, can be very easilt accessed with the syntax Array.length 
+
+
+   A more complex implementation of an array it's a multi-dimensional array, or an array that contains other arrays. 
+   Notice that this array also contains Js objects. 
+   So arrays are also capable of storing complex objects. 
+
+   let complexArray = [
+      [   { one: 1 , two: 2},     { three : 3 , four : 4}  ],
+      [   { a: "a", b : "b"},     { c: "c", d: "d"}        ]      
+   ];
+
+   The fundamental feature ofany data structute is, of course, the ability to not only store data, but to be able to retrieve that data on command.
+
+   When we define a simple arrays ( 3 items): 
+
+   ------------
+   let ourArray = [ "a", "b", "c"]; 
+   ------------
+
+   In an array, each array item has an index. 
+    This index doubles as the postion of that item in the arraym and how we reference it. However, it is important to note, that Js arrays are zero-indexed, meaning that the first element of an array is actually at the zeroth position, not the first. 
+
+    In order to retrieve an element from an array we can enclose an index in brackets and append it to the end of an array, or more commonly, to a variable wich references an array object. This is known as bracket notation. 
+
+    For retrieve the from ourArray 
+
+    ------------
+     let ourVariable = ourArray[0];
+     //ourVariable equals "a";
+    ------------
+
+    In addition to accessing the value associated with an index, we can also set an index to a value using the same notation. 
+
+    ------------
+    ourArray[1] = "not b anymore"; 
+    //  ourArray now equals ["a", "not b anymore", "c"]
+
+   Using bracket notation, we have now reset the item at index 11 from "b", to "not b anymore"
+
+
+   Add items to an Array with push() and unshift()
+
+   An array's length, like the data types it can contain, is not fiex. Arrays can be defined with a length of any number of elements, and elements can be added or removed over time: in other words, arrays are mutable. 
+
+   We can modify an array with : Array.push(), Array.unshift()
+
+   Both methods take one or more elements as parameters and add those elements to the array the method: 
+
+   push() -----> to the end. 
+   unshift()  ---> ti the beginning. 
+
+   let A = 'a'; 
+   let alphaBet = ['b', 'c'];
+
+   alphaBet.unshift('f','g');
+   // now equals ['f', 'g', 'b', 'c']
+
+   alphaBet.push(A);
+   //now equals ['b', 'c', 'a']
+
+  We can also pass variables, wich allows us even greater flexibility in dynamically modifying our array's data. 
+
+
+  Both push() and unshify have corresponding methods that are nearly functional opposites : pop() and shift(). 
+
+  .pop() ----> removes from the end (push)
+  .shift()  ---> removes from the beggining (unshift)
+
+  is that neither method takes parameters, and each only allows an array to be modified by a single element at a time. 
+
+ example 
+ ---------------------
+
+ let greetings = ['what\'s up?', 'hello', 'see ya!']; 
+
+ greetings.pop();
+ // now equals ['what\'s up ', 'hello']
+
+ greetings.shift()
+ // now equals ['hello']
+
+ We can also return the value of the removed element 
+ Using a variable to stock.
+
+ let popped = greetings.pop();
+ // returns 'hello'
+ // greetings now equals []
+
+ -- Remove items using splice() ---
+ splice() allows us to do just  that : remove any number of consecutive elements from anywhere in an array. 
+
+ splice(), can take up to 3 parameters, but for now, we'll focus on just the first 2. The first two parameters of splice() are integeres which represent indexes, or positions, of the array that splice() is being called upon. 
+
+ n.splice()  -- first parameter represents the index on the array from wich to begin removing elements, while the second parameter indicates the number of elements to delete : 
+
+ let array = ['today', 'was', 'not', 'so', 'great']; 
+
+ array.splice(2, 2); 
+ //remove 2 elements beginning with the 3rd element. 
+ // array now equals ['today', 'was', 'great']
+
+
+ splice() not only modifies the array it's being called on, but it also returns a new array containing the value of the removed elements: 
+
+ let array = ['I', 'am', 'feeling', 'really', 'happy'];
+
+ let newArray = array.splice(3, 2); 
+ // newArray equals ['really', 'happy']
+
+
+ ----------------------
+ Add items using splice() - WtH :O 
+ In addition to removing elements, we can use that third parameter, wich represents one or more elements, to add them as well. This can be incredibly useful for quickly switching out an element, or a set of elements, for another.
+
+ - Some extrange things - Storing a color scheme for a set of DOM elements in an array, and want to dynamically change a color based on some action : --
+
+ --------------------------------------
+
+ function colorChange ( arr, index, newColor) {
+    arr.splice(index, 1, newColor); 
+    return arr;
+ }
+
+ let colorScheme = ['red','blue','white','brown']; 
+
+ colorScheme = colorChange(colorScheme , 2, 'light blue');
+ // we removed blue and white and put 'light blue' in its place
+ // colorScheme ('red','light blue', brown);
+
+ ----------------------------
+
+ Copy arrays items using slice()
+ Rather than modifying an array, copies, or extracts, a given number of elements to a new array, leaving the array it os called upon untouched.slice() takes only 2 parameters. - the first is the index at wich to begin extraction, and the second is the index at wich to stop extraction (extraction will occur up to, but not inluding the element at this index )
+
+ example 
+ ---------------------------
+
+ let weather Conditions = ['rain', 'snow', 'sleet', 'hail', 'clear']; 
+
+ let todayWeather = weatherConditions.slice(1,3); 
+ // todayWeather equals ['snow', 'sleet']; 
+ // weatherConditions still equals ['rain', 'snow', 'sleet', 'hail', 'clear']
+
+ Es'6 new spread operator allows us to easily copy all of an arra's element, in order, with a simple and highly readable syntac. The spread syntax simply looks like this '...'
+
+ In practice, we can use the spread operator to copy an array like so : 
+
+ let thisArray = [true, true, undefined, false, null];
+ let thatArray = [...thisArray];
+ // thatArray equals [true, true, undefined, false, null]
+ // thisArray remains unchanged, and is identical to thatArray
+
+ The spread operator copies all elements into a new  empty object.
+
+ Another huge advantage of the spread operator, is the  ability to combine arrays, or to insert all the elements of one array into another, at any index. 
+ More traditional syntaxes , we let us to concatenate arrays, but this only allows us to combine arrays at the end of one, and at the start of another. 
+ Spread make it easy. 
+
+
+ ----------------------------------------
+
+ let thisArray = ['sage', 'rosemary', 'parsley']; 
+
+ let thatArray = ['basil', 'cilantro', ...thisArray , 'oregano']; 
+
+ //thatArray now equals ['basil','cilantro','sage','rosemary','pimenton', 'oregano']
+
+------------------------------------------
+
+Using spread syntac, we have just achieved an opration that would have been more complex and more verbose has we used traditional methods. 
+
