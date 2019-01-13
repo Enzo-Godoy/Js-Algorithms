@@ -1,0 +1,169 @@
+Check for the presence of an element with indexOf()
+Since arrays can be changed, or mutated, at any time, there's no guarantee about where a particular piece of data will be on a given array, or if that element even still exists. Luckily, Js provides us with another built-in metohd, indexOf(), that allows us to quickly and easily check for the presence of an element on an array. indexOf() takes an element as a parameter, and when called, it returns the position, or index, of that element,or -a if the element does not exist on the array. 
+
+For example : 
+
+let fruits = ['apples', 'pears', 'oranges', 'peaches', 'peats']; 
+
+fruits.indexOf('dates')   // returns -1 
+fruits.indexOf('oranges')   // returns 2
+fruits.indexOf('pears')   // returns 1, the first index at wich the element exists
+
+-- indexOf() can be incredibly quickly for checking for the presence of an element on an array. 
+
+Iterate through all an array's items using for loops- 
+
+Sometimes when working with arrays, it's very handy to be able to iterate through each item to find one or more elements that we might need, or to manipulate an array based on wich data items meet a certain set of criteria. 
+Js offers several buil in methods that each iterate over arrays in slightly different ways to achieve different results ( such as every(), forEach(), map())
+
+-- The technique wich is most flexible and offers us the greates amount of control is a simple for loop. 
+
+
+function greaterThanTen(arr){ 
+	let newArr = []: 
+	for (let i = 0; i < arr.length; i++)  {
+	   of (arr[i] > 10) {
+	     newArr.push(arr[i];
+	   }
+	 }
+	return newArr
+}
+
+greaterThanTen ( [2, 12, 8, 14, 80, 0, 1]); 
+// returns [12, 14, 80]
+
+Using a for loop, this function iterates through and accesses each element of the array, and subjects it to a simple test that we hace created. In this way, we have easily and programmatically determined wich data items are greater than 10, and returned a new array containing those items. 
+
+
+
+One of the most powerful features when thinking of arrays as data structures, is that arrays can contain, or even be completely made up of other arrays. We have seen arrays that contain arrays in previous challenges, but fairly simple ones. However, arrays can contain an infinite depth of arrays that can cotain other arrays, each with their own arbitrary levels of depth, and so on.
+In this way, an array can very quickly become avery comple data structure, known as a multi-dimensional, or nest array. 
+
+
+
+example 
+
+-----------------------------------
+
+let nestedArray = [ 
+         // top, or first level - the outer most array
+
+  ['deep'],        // an array within an array, 2 levels of depth
+
+  [ ['deeper'], ['deeper']   // 2 arrays nested 3 levels deep],
+  [ [  ['deepest'], ['deepest'] // 2 arrays nested 4 levels deep],
+    [[['deepest-est?'] // an array nested 5 levels deep]]]
+];
+
+
+However, we can still very easily access the deepest levels of an array this complex with bracket notation 
+
+
+--------------------------------------------------
+
+JS Objects 
+
+At their most basic, objects are just collections of key-value pairs, or in other words, pieces od data mapped to unique identifiers that we call properties or keys. 
+
+
+example : 
+
+let FCC_User = { 
+	 username : 'awesome_coder',
+	 followers : 572 , 
+	 points : 1741,
+	 completedProjects : 12
+}; 
+
+This obj. has four properties, each of wich map to a specific value. 
+
+We can accese by dot notation or with brackets. 
+
+//dot notation 
+FCC_User.followers . 
+
+//brackets 
+FCC_User['followers']
+
+With bracket notation, we enclosed followers in quotes. This is because the brackets actually allow us to pass a variable in to be evaluated as a property name . 
+If we had passed followers in without the quotes, the Js engine would have attempted to evaluate it as a variable, and a ReferenceError : followers is not defined would have been thrown. 
+
+Using the same syntac, we an also add new key-values pairs to objects.
+
+Objects properties can be nested to an arbitrary depth, and their values can be any type of data supported by Js, including arrays and even other objects. 
+
+
+Example :
+
+let nestedObject = {
+	id : 28802695164,
+	date : 'December 31, 2016',
+	data : { 
+	totalUsers : 99,
+	online : 80, 
+		onlineStatus : {
+		  active : 67,
+		  away : 13
+		}
+    }
+};
+
+We can use bracket notation as a way to access property values using the evaluation of a variable. 
+
+let selectedFood = getCurrentFood(scannedItem);
+let inventory = foods [ selectedFood]; 
+
+Bracket notation is very useful because sometimes object properties are not known before runtime or we need to access them in a more dynamic way. 
+
+
+In short, they are key-values stores wich provide a flexible, intuitive way to structure datam and, they provide vary fast lookup time. 
+There are several common operations we can perform on objects so we can become comfortable applying these usuful data structures in our programs. 
+
+
+Js provide us with two different ways to know if an object has a specific property. 
+
+One use the hasOwnProperty() methof.
+'in' keyword. 
+
+example 
+
+user.hasOwnProperty('grinch');
+'grinch' in users; 
+//both returns true. 
+
+Iterate through the keys of an object with a for...in statement 
+
+Sometimes we may neeed to iterate through all the keys within an object. This requires a specific syntax in Js called for...in statement. 
+
+
+Example 
+
+-------------------------------------------
+for ( let user in users) { 
+	console.log(user); 
+}; 
+
+//  logs: 
+Alan
+Jeff
+Sarah
+Ryan 
+
+---------------------------------------
+
+In this statement, we defined a  variable user, and as we can see, this variable was reset during each iteration to each of the object's keys as the statement looped through the object, resulting in each user's name being printed to the console. 
+
+
+--- Important 
+
+Objects do not maintain an ordering to stored keys like arrays do; thus a keys position on an object, or the relative order in wich it appears, is irrelevant when referencing or accessing that key. 
+
+
+Generate an Array of All object keys with object.keys() 
+We can also generate an array wich contains all the keys stored in an object using the Object.keys() method and passing in an object as the argument. This will return an array with strings representing each property in the object. Again, there will be no specific order to the entries in the array. 
+
+
+-----------------------------------
+We've seen all the basic stuff for Js objects. We can add, modify, and remove key-values pairs, check if keys exist, and iterate over all the keys in an object. As we continue learning Js we will see even more versatile applications of objects. 
+Additionally, the oprtional Advanced Data Structures lessons later in the curriculum also cover the ES6 Map and Set objects, both of wich are similar to ordinary objects but provide some additional features. 
+
