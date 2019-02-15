@@ -1,0 +1,239 @@
+Splice/Slice both are Js Array functions. 
+
+Splice() 
+Returns the removed items(s) in an array, changes the array. 
+can take n number of arguments. 
+
+
+Slice() 
+Returns selected elements in an array as a new array object. So doesn't change the original array. 
+This methods takes just 2 arguments.
+
+
+Splice 
+Arguments 
+1 - Index, Required. 
+2 - Items to be removed. 
+3 - new items to be added to the array.
+
+
+//We need to use  negative values to spicify the position from the end of the array.
+
+var array =[1,2,3,4,5]; 
+console.log(array.splice(2)); 
+// shows [3,4,5], returned removed items(s) as a new array obj. 
+
+
+console.log(array) 
+// shows [1,2], original array altered. 
+
+var array2 = [6,7,8,9,0]; 
+console.log(array2.splice(2,1)); 
+// shows [8] 
+
+console.log(array2.splice(2,0)); 
+// shows [}.  as no items removed] 
+
+console.log(array2)   
+
+---------------------------- 
+i'll be taking notes about how arrays are manipulated to developed the easy algorithms for freeCodeCamp. 
+
+
+
+
+One-dimensional array : only has one level, or that it does not have any other arrays nested within it. 
+Can contain a variety od Js data types. 
+
+All array's have a length property . 
+ 
+ Array-Name.length
+
+Multi-dimensional array or an array that can contains other arrays. 
+Even some Js objects. (So arrays are also capable of storing complex objects)
+
+The fundamental feature of any data structure isn't the ability to store data, but to be able to retrieve that data on command. 
+
+¿How we can access that array's information?
+
+
+In an array, each array item has an index. 
+This index doubles as(work as) the position of that item in the array, and how we reference it. 
+
+Js array's are zero-indexed, the first element of an array is actually at the zeroth position, not the first. 
+
+In order to retrieve an element from an array we can enclose an index in brackets and append it to the end of an array,or more commonly, to a variable wich reference an array object. 
+-- This is know as bracket notation. 
+
+
+let ourArray = ["a","b", "c"]; 
+
+let ourVar = ourArray[0]; 
+//ourVariable equals "a"
+
+
+in addition to accessing the value associated with an index, we can also set an index value using the same notation. 
+
+ourArray[1] = "not b anymore"; 
+// ourArray now equals ["a"], "not b anymore", "c"]; 
+
+Arrays can be defined with a length of any number of elements, and elements  can be added or removed over time. (mutable).
+
+
+Two methods to modify an array (push/unshift).
+Boths methods take one or more elements as parameters and add those elements to the array the method is being called on. 
+
+
+We can also pass variables, wich allows us even greater felixibility in dynamically modifying our array's data. 
+
+Both push() and unshift() have corresponding methods that are nearly functional opposites : (pop/shift)
+
+(pop/shift) : neither methods takes parameters, and each only allows an array to be modified by a single element at a time. 
+
+We can also return the value of the removed element with either method storing the value on some temporary var.
+
+
+Splice() allows us to remove any number of consecutive elements from anywhere in an array.
+
+Splice can take up to 3 parameters. 
+The first represent indexes, or positions. The second indicates the number of elements to delete. 
+
+splice() not inly modifies that array's it's being called on, but it also returns a new array containing the value of the removed elements. 
+
+
+The third parameter of splice() - its added items to replaced the deleted ones or even many mores.
+
+
+Slice() 
+Copies or extract a given number of elements to a new array, leaving the arrays it is called upon untouched.
+  slice---> only tkaes 2 parameters. 
+
+  First is the index to begin extraction. 
+  Second is the index at wich to stop extraction(except that number of index).
+
+So, usually we create new's array by extracting elements from an existing array.
+
+
+ES'6 new spread operator ( ...)
+ Allows us to easily copy ll of an array's elements, in order, with a simple and highly readable syntac. 
+  looks like ( '...' )
+
+
+  Another huge advantage of the spread operator, is the ability to combine arrays, or to insert all the elements of one array into another, at any index.
+
+
+  other syntaxes just let us concatenate arrays only at the first or the end of an array.
+
+
+  Arrays can be changes, mutated at any time, there's no guarantee about where a particular piece of data will be on a given array, or if that element even still exist. So for that we used indexOf()  --- method. ---
+
+  Incredibly useful for quickly checking for the presence of an element on an array.
+
+
+  Aometimes when working with arrays, it is very handy to be able to iterate through each item to finde one or more elements that we might neeedt, or to manipulate an array based on wich data items meet a certaion set of criteria. 
+
+  Js offers several built in methods that each iterate over arrays in slightly different ways to achieve different results ( such as every(), forEach(), map(), etc..)
+
+However the most flexible techniques that offers us the greates amount of control is a simple for loop.
+
+
+One of the most powerful features when thinking of arrays as data structures, is that arrays can contain, or even completely made up of other arrays. Each arrays with their own arbitrary levels of depth, and so on. 
+In this way, an array can very quickly become avery complex data structure, known as a multi-dimensional, or nested array.
+
+
+Must be inserted into n levels deep. This means within exactly threes sets of [square-braclets]
+
+Objects (basic view) ,  are just collections of key-value pairs. 
+   Pieces of data mapped to unique identifiers that we call properties or keys. 
+
+   Properties wich map to a specific value.
+
+
+   object.propertie  //Dot notation
+
+
+  -- We can also access the property with brackets 
+
+  object['propertie']; 
+
+  With brackets notation, we enclosed followers in quotes. This is beacuse the brackets actually allows us to pass a variable in to be evaluated as a property name.
+
+  If we put some propertie in without the quotes, the js engine would have attemtep to evaluate it as avariable, and a ReferenceError: propiedad is not defined would have beeen thrown.
+
+
+  Object properties can be nested to an arbitrary depth, and their values can be any type of data supported by Js, including arrays and even other objects.
+
+
+  While structures can quickly become complex, we can still use the same notations to access the information we need.
+
+
+  Previously we mentioned the use of bracket notation as a way to access property values using the evaluation of a variable. 
+  Bracket notation is very useful because sometimes object properties are not known before runtime or we need to access them in a more dynamic way. 
+
+  Key-value stores provide a flexible, intituitive way to structure data, and , they provide very fast lookup time. 
+    Most common operations  --- perform on objects.
+
+
+    Remover a key-value pair from an object. 
+
+    delete object.properties; 
+
+
+    Basic operations add, modify, and remove a from b. 
+
+    Specific property in an object,    (hasOwnProperty()/in-keyword)
+
+
+
+    object.hasOwnProperty('property'); 
+
+    'property' in Object;
+
+ //we can pass multiple propertie to it.
+
+ If we iterate thourgh all the keys within an object. This requires a specific syntax in js called a for...in statement.
+
+
+ example
+ for (let var in object) {
+     console.log(object);
+ };
+
+The variable its reset during each iteration to each of the object's keys as the statement looped through the object.
+
+
+
+Objects do not maintain an ordering to stored keys like arrays do; thus a keys position on an object, or the relative order in wich it appears, is irrelevant when referencing or accessing that key.
+
+if be use some kind of variable we need to be sure of use obj[]  --> notation without quotes at the variable or points related to it.
+
+We can generate an array wich conatins all the keys stored in an object using Object.keys() method passing in an object as the argument. 
+
+This will return an array with strings representing each property in the object.
+ There won't  be no specific order to the entries in the array.
+
+ We can generate an array wich contains all the keys in an object with --- object.keys() ---
+
+ Just we put the object inside the method and stored that value on an array.
+
+  let someArray = Object.keys(objectName);
+
+  // there will no be specific order to the entries in the array.
+
+
+
+  Basic operations for Js objects. We can add, modify, and remove key-value pairs, check if keys exist, and interate over all the keys in an object. 
+
+  There're more versatile applications of objects. 
+
+  Map and Set objects(?).
+  Both are ordinary objects but prive some additional features. 
+
+
+
+  Last exercises
+
+
+
+
+
