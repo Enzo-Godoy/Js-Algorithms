@@ -1,0 +1,94 @@
+// Introduction to Bootstrap
+
+Bootstrap is a front-end framework usd to design responsive web pages and web applications. It takes a mobile-first approach to web development. Bootstrap includes pre-built CSS styles and classes, plus some Js functionality. 
+
+Botpp uses a respnsive 12 column grid layour and has design templates for : 
+
+* Button 
+* Images
+* Tables
+* Forms 
+* Navigation
+
+//Used to style pages. 
+
+
+Botpp will figure out how wide our screen is and respond by resizing our HTML elements - hence the name "Responsive Design". 
+
+We don't need to design a mobile version. It will look good on devices with screens of any width. 
+
+// Either '>' or '/>' to close the link tag is acceptable. 
+
+
+With bootsp all we need to do is add the img-responsive classe to mae our image responsive
+
+We can add several classes to the same element by separating each of them with a space. 
+
+
+Bootsp has its own style for button elements, wich look much better than the plain HTML ones. 
+
+For this we need to create a new button element and give it the btn and btn-default classes. 
+
+Normally, our button elements with the btn and btn-default classes are only as wide as the text they contain. 
+
+By making them block elements with the addition of class "btn-block"
+ our button will stretch to fill our page's entire horizontal space and any elements following it will flow onto a "new line" below the block. 
+
+Bootp comes with several pre-defined colors for buttons. The btn-info class is used to call attention to optional actions that the user can take. 
+For this we add the (btn-info, btn-block) classes to some button.
+
+Bootp uses a responsive 12-column grid system, wich makes it easy to put elements into rows and specify each element's relative width. Most of Bootp's classes can be applied to a div element. 
+
+Bootp also has different column width attributes that it uses depending on how wide the user's screen is. 
+
+col-'size'-*  . In size we put the size with (md or xs) notation, , and '*' is a number specifying how many columns wide the element should be. 
+
+We can make our app look more conventional by using Bootstrap's built-in styles instead of the custom styles. 
+
+We can use spans to create inline elements. 
+with 'btn-block' claas we make a button to fill an entire row.
+
+| button  |
+|              btn-block button                          | 
+
+Illustration of the difference between an "inline" element and a "block" element. 
+
+By using the inline span element, we can put several elements on the same line, and eventyle different parts of the same lin differently O: awesome!. 
+
+We will make a simple heading by putting the title and some image in the same row. 
+
+Bootsp uses a responsive grid system, wich makes it easy to put elements into rows and specify each element's relative width. 
+
+//Font awesome is a convenient library of icons. These icons are vector graphics, stored in the .svg file format. These  icons are treated just like fonts. You can specify their size using pixels, and they will assume the font size of their parent HTML elements. 
+
+We added to an app by put a link reference. 
+
+The i element was originally sued to make other elements italic, but is now commonly used for icons. We can add the Font-Awesome classes to the i element to turn it into an icon, for exmaple 
+
+<i class="fa fa-info-circle"></i>
+
+//span element is also acceptable for use with icons.
+
+
+
+We can use Bootsp's   "col-xs-* " classes on form elements, too!. This way, our radio buttons will be evenly spred out across the page, regardless of how wide the screen resolution is. 
+
+
+//All textual <input>, <textarea>, and <select> elements with the class .form-control have a width of 100%
+
+To use Jquery, we will modify HTML elements without needing to actually change then in HTML. 
+
+ So we need to remember to comment our html (<!-- -->) 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
