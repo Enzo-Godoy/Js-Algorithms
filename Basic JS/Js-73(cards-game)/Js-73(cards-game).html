@@ -1,0 +1,34 @@
+var count = 0;
+
+function cc(card) {
+  var bet = " Bets";
+  var holds = "  Hold";
+  switch(card){
+   //Positive cases
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+          count++;
+          break;
+ //Decrement  cards
+        case 10:
+        case "J":
+        case "Q":
+        case "K":
+        case "A":
+          count--;
+          break;
+      }
+
+      if (count > 0){
+        return count + bet;
+      } else {
+        return count + hold;
+      }
+
+}
+
+// Add/remove calls to test.
+cc(2); cc(3); cc(7); cc('K'); cc('A');

@@ -1,0 +1,16 @@
+// Setup
+var space = {
+  galaxy: "orion",
+  way: "milky",
+  planets: "earth"
+};
+
+function checjSpace(fromSpace){
+  if(space.hasOwnProperty(fromSpace)){
+   return  myObj[fromSpace];
+  }
+  else { return console.log("Not in this dimension"); }  
+}
+
+// Code to test
+checkObj("Mercury");
