@@ -1,213 +1,102 @@
-var myMusic = [
+//An array with objects as elements 
+var myMovies = [ 
   {
-    "artist": "Billy Joel",
-    "title": "Piano Man",
-    "release_year": 1973,
-    "formats": [ 
-      "CD",
-      "8T",
-      "LP"
-    ],
-    "gold": true
-  },
-  
-  {"artist": "Drylland",
-    "title": "Heaven Man",
-    "release_year": 1977,
-    "formats": [
-      "CD", 
-      "LP"
-    ]
-  }
-  
-];
+  "Director" : "Mr.Leizpick". 
+  "title" : "The night in the day", 
+  "release_year" : 1999, 
+  "formats" : ["vinyl", "dvd", "streaming"], 
+  "price" : 99.32 
+}, {
+  "Director" : "Mr.Cyllus". 
+  "title" : "The life of the silents", 
+  "release_year" : 1943, 
+  "formats" : [ "dvd", "streaming"], 
+  "price" : 33.23
+} ] ; 
 
-
---2
-// Setup
-var myStorage = {
-  "car": {
-    "inside": {
-      "glove box": "maps",
-      "passenger seat": "crumbs"
-     },
-    "outside": {
-      "trunk": "jack"
-    }
+ 
+// An object with sub-objects as properties 
+var myFruits = { 
+"type" : {
+  "name"    : "Apple",
+  "details" : "fruit",
+  "country" : "Noruega",
+  "price"   :  2.33
+},
+  "property" : {
+    "colour" : "red", 
+    "vitamins" "A family"
   }
 };
 
-var gloveBoxContents =myStorage.car.inside["glove box"] ;
 
-console.log(gloveBoxContents);
+var fruitDetail = myFruits.property.colour["Green"];
+console.log(fruitDetail); 
+ 
 
+/* <======================================> */
 
---3
-// Setup
-var myPlants = [
-  { 
-    type: "flowers",
-    list: [
-      "rose",
-      "tulip",
-      "dandelion"
-    ]
-  },
+var myCars = [
   {
-    type: "trees",
-    list: [
-      "fir",
-      "pine",
-      "birch"
+    type : "Fiat", 
+    list : [ 
+    "Amodel-1",
+    "Amodel-2",
+    "Amodel-3",
     ]
-  }  
-];
-
-
-var secondTree = myPlants[1].list[1]; 
-console.log(secondTree);
-
-
---4
-var count = 0;
-
-function cc(card) {
-  var bet = " Bets";
-  var holds = "  Hold";
-  switch(card){
-   //Positive cases
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-          count++;
-          break;
- //Decrement  cards
-        case 10:
-        case "J":
-        case "Q":
-        case "K":
-        case "A":
-          count--;
-          break;
-      }
-
-      if (count > 0){
-        return count + bet;
-      } else {
-        return count + hold;
-      }
-
-}
-
-// Add/remove calls to test.
-cc(2); cc(3); cc(7); cc('K'); cc('A');
-
---5
-// Setup
-function phoneticLookup(val) {
-  var result = "";
-
-  var lookup = {
-    "alpha": "Adams",      
-    "bravo": "Boston",
-    "charlie": "Chicago",
-    "delta": "Denver",
-    "echo": "Easy",
-    "foxtrot": "Frank",
-  };
-  result = lookup[val];
-  return console.log(result);
-}
-
-//Code to test
-phoneticLookup("delta");
-
---6
- Example of a complex data structure.
- var ourMusic = [
+  }, 
   {
-  "artist": "Daft Punk",
-  "title": "Homework",
-  "release_year": 1997,
-  "formats": ["CD","Cassette","LP"],
-  "gold": true
+    type : "Ford", 
+    list : [ 
+    "Bmodel-1",
+    "Bmodel-2",
+    "Bmodel-3",
+    ]
+
   }
-
- ];
-
- --7
- var myMusic = [
-  {
-    "artist": "Billy Joel",
-    "title": "Piano Man",
-    "release_year": 1973,
-    "formats": [ 
-      "CD",
-      "8T",
-      "LP"
-    ],
-    "gold": true
-  },
-  {
-    "artist" : "La renga",
-    "title" : "Detonador de sueños",
-    "release_year": 2006,
-    "formats" : ["DVD","CD", "LP"]
-  }  
 ];
+  
+/* Value Bmodel-2 */ 
+var secondCars = myCars[1].list[2]; 
+console.log(secondCars); 
 
 
---8
-// Setup
-var myArray = [];
+  
+// A single array one dimension 
+var theArray = [] ; 
 
-// Code while
-var i = 0;
-while ( i < 5) { 
-      myArray.push(i);
-      i++;
+var i = 0; 
+while ( i < 5 ) {
+   theArray.push(i); 
+   i++;
 }
 
 
+//Adding value to an array with a foor loop 
+var firstArray  = [] ; 
+var secondArray = [] ; 
 
---9
-// Example
-var ourArray = [];
-var myArray = [];
-
-//for ourArray
-for (var i = 0; i < 5; i++) {
-  ourArray.push(i);
+for ( var i = 1 ; i < 5; i++){
+  firstArray.push(i); 
 }
 
-// for myArray
-for (var i = 1; i < 6; i++) {
-  myArray.push(i);
+for ( var j = 1; j < 7 ; j++) {
+  secondArray.push(j)
 }
 
-console.log(myArray);
+let sizeOfArrays = firstArray.length + secondArray.length; 
+console.log(sizeOfArrays); 
 
+// Same that before but incrementing by 2 each time, it means even numbers 
+var firstEven  = []; 
+var secondEven = []; 
 
-
---9
-// Example
-var ourArray = [];
-var myArray = [];
-
-//Code of example
-for (var i = 0; i < 10; i += 2) {
-  ourArray.push(i);
+for ( var i = 0; i < 10; i += 2){
+  firstEven.push(i); 
 }
 
-//Changing initialization so we can count by odd numbers
-for (var i = 1; i < 10; i += 2) {
-  myArray.push(i);
+for( var j = 0 ; j < 8; j += 2){
+  secondEven.push(j);
 }
 
-
-console.log(myArray);
-
-
-
+console.log(secondEven);
