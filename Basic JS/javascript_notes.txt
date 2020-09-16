@@ -1,0 +1,27 @@
+//Accessing an object property 
+
+var blade = { 
+	samurai : "Storm", ninja : "Silence", "Okinawa Master" : "breaker"
+}; 
+
+let bladeSamurai = blade.samurai; 
+let bladeOkinawa = blade["Okinawa Master"]; 
+
+console.log(bladeSumarai); 
+
+blade["Okinawa Master"] = "Sharped Palm";
+
+console.log(blade["Okinawa Master"]); 
+
+//Updating an object property 
+
+let myList = { 
+	"product" : "Apple",
+	"price"   : 4.99, 
+	"country" : "Armenia"
+};
+
+
+
+myList.price = 5.60; 
+
