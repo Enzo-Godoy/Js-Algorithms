@@ -1,0 +1,93 @@
+//Accessing an object property 
+
+var blade = { 
+	samurai : "Storm", ninja : "Silence", "Okinawa Master" : "breaker"
+}; 
+
+let bladeSamurai = blade.samurai; 
+let bladeOkinawa = blade["Okinawa Master"]; 
+
+console.log(bladeSumarai); 
+
+blade["Okinawa Master"] = "Sharped Palm";
+
+console.log(blade["Okinawa Master"]); 
+
+//Updating an object property 
+
+let myList = { 
+	"product" : "Apple",
+	"price"   : 4.99, 
+	"country" : "Armenia"
+};
+
+
+
+myList.price = 5.60; 
+
+/* About array modifications */
+
+//Adding values at the end 
+arr.pop();  >> Delete values at the end. 
+arr.shift(); >> Delete values at the beggining. 
+
+//Adding values at the beggining 
+arr.push(); >> Add values at the end. 
+arr.unshift(); >> Add values at the beginning.  
+
+
+/* <======= About arrow functions ==> 
+Arrow functions are not named. 
+
+Anonym functions are similar but they don't have
+ '=>()' representation an the keyword function it's used on them.
+
+*/ 
+
+//Arrow function 
+const myArrowFunc = () =>{ 
+	const myValue = "some data"; 
+	return myValue; 
+}
+
+//Anonym function 
+const myArrowFunc = function(){ 
+	const myValue = "some data"; 
+	return myValue; 
+}
+
+/* <== Notes about objects and arrays ==> */ 
+Objects and arrays are similar, 
+arrays are accesed through index . 
+
+sample : 
+arr[3] = "value"; 
+
+Objects are accessed through properties 
+
+//Which often causes confusion it's the double way of acces an object, similar to an arra one.
+objectName.property = "value new";
+objectName["proper  ty"];
+
+
+ // Case evaluation depends upon parameter in switch(arg)
+switch (num) { 
+ case value1:
+  statement1; 
+ break; 
+ case value2:
+  statement2; 
+ break; 
+ case valueN:
+  statementN; 
+ break; 
+}
+
+
+
+
+//Strings are interpreted as a collection of characters. 
+
+//To avoid our objects to be changed, we freezed them 
+Object.freeze(obj); 
+
