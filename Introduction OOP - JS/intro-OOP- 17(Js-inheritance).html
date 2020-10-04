@@ -1,0 +1,22 @@
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+   console.log("nom nom nom")}  
+};
+
+
+// Cat animal inheriting from Animal
+function Cat(name) {
+  constructor : Animal;
+  this.name = name;
+} Cat.prototype = {constructor: Cat};
+
+
+// Bear animal inheriting from Animal
+function Bear(name) {
+  constructor : Animal; 
+  this.name = name; 
+} Bear.prototype = {constructor: Bear};
+
