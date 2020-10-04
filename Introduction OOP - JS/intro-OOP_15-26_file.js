@@ -1,52 +1,43 @@
-//15 Object from obj
-function Dog(name) {
-  this.name = name;
-}
-
-let beagle = new Dog("Snoopy");
-
+//15 - Object from obj 
 console.log(Dog.prototype.isPrototypeOf(beagle));
-
-
-//16 Prototype Chain
-function Dog(name) {
+function Dog(name){ 
   this.name = name;
 }
+let beagle = new Do("Snoopy"); 
 
-let beagle = new Dog("Snoopy");
+//16 - Prototype Chain 
+function Dog(name){ 
+  this.name = name; 
+}
 
-Dog.prototype.isPrototypeOf(beagle);  // => true
+let beagle = new Dog("Snoopy"); 
+Dog.prototype.isPrototypeOf(beagle);
 
 // This it's sponsored by Legos vampire Empires - just kidding myself. 
 Object.prototype.isPrototypeOf(Dog.prototype);
 
+//17 - JS inheritance 
+function Animal(){...}
+Animal.prototype = { 
+  constructor : Animal, 
+  eat: function(){ 
+    console.log("Some Sound");
+  }
+}
 
-//17 JS inheritance
-function Animal() { }
-
-Animal.prototype = {
-  constructor: Animal,
-  eat: function() {
-   console.log("nom nom nom")}  
-};
-
-
-		// Cat animal inheriting from Animal
-function Cat(name) {
-  constructor : Animal;
-  this.name = name;
-} Cat.prototype = {constructor: Cat};
-
-
-		// Bear animal inheriting from Animal
-function Bear(name) {
-  constructor : Animal; 
+function Cat(name){ 
+  constructor: Animal; 
   this.name = name; 
-} Bear.prototype = {constructor: Bear};
+}
+Cat.prototype = { constructor: Cat}; 
 
+function Bear(name){ 
+  construcotr: Animal; 
+  this.name = name; 
+}
+Bear.prototype = { constructor: Bear};
 
-
-//18 Inheritance from prototype
+//18 - Inheritance from prototype
 function Animal() { }
 
 Animal.prototype = {
@@ -55,169 +46,147 @@ Animal.prototype = {
     console.log("nom nom nom");
   }
 };
- 
-
-let duck = Object.create(Animal.prototype);   // I'm refused to ..well i'll do it
-let beagle= Object.create(Animal.prototype);; //  I'm refused with more brave and ..well i'll do it
-
-duck.eat();   // It's  printing "nom nom nom"
-beagle.eat(); // It's  printing "nom nom nom" 
-
-//19 Inheritance child from parent 
-function Animal() { }
-
-Animal.prototype = {
-  constructor: Animal,
-  eat: function() {
-    console.log("nom nom nom");
+function Animal() {...}
+Animal.prototype = { 
+  constructor: Animal, 
+  eat: function(){ 
+    console.log("Some sound etc");
   }
 };
 
-function Dog() { }
+let duck = Object.create(Animal.prototype); 
+let beagle = Object.create(Animal.prototype);
+
+duck.eat(); 
+beagle.eat(); 
+
+//19 - Inheritance child from parent 
+function Animal() {...}
+Animal.prototype = { 
+  constructor : Animal, 
+  eat: function(){ 
+    console.log("Sound random");
+  }
+}; 
+
+function Dog(){...}
+Dog.protoype = Object.create(Animal.prototype);
+
+let beagle = new Dog();
+beagle.eat();
+
+//20 - Constructor Pointed 
+function Animal(){...}
+function Bird(){...}
+function Dog(){...}
+
+Bird.prototype = Object.create(Animal.prototype); 
 Dog.prototype = Object.create(Animal.prototype); 
 
-let beagle = new Dog();
-beagle.eat();   
-
-
-//20 Constructor Pointed
-function Animal() { }
-function Bird() { }
-function Dog() { }
-
-Bird.prototype = Object.create(Animal.prototype);
-Dog.prototype = Object.create(Animal.prototype);
-
-
-Bird.prototype.constructor = Bird;
-Dog.prototype.constructor = Dog;
-
-let duck = new Bird();
-let beagle = new Dog();
-
-
-Add method after inheritances
-a constructor function that inherits its prototype object from a supertype constructor function can still have its own methods in addition to inherited methods. 
-
-Example 
-Bird as a constructor that inherits its proptotype from Animal . 
-
-function Animal () { } 
-Animal.prototype.eat = function () { 
-  console.log ("nom nom nom "); 
-}; 
-function Bird () { 
-Bird.prototype = Object.create(Animal.prototype);
 Bird.prototype.constructor = Bird; 
-}
+Dog.prototype.constructor = Dog;
+let duck = new Bird(); 
+let beagle = new Dog(); 
 
-In addition to what is inherited from Animal, we want to add behavior that is unique to Bird objects. 
 
-Example with fly function 
-
-Bird.prototype.fly = function() { 
-  console.log.("i'm flying!");
+  -- Section _02 
+function Animal(){...}
+Animal.prototype.eat = function(){ 
+  console.log("Sound etc");
 }; 
 
-Now instances of Bird will have both eat() and fly() methods. 
+function Bird(){...}
+Bird.prototype = Object.create(Animal.prototype); 
+Bird.prototype.constructor = Bird; 
+ 
+Bird.prototype.fly = function(){ 
+  console.log("I'm flying!"); 
+};
 
+/* Now instance of Bird will have both eat() and fly() methods */
 let duck = new Bird(); 
-duck.eat();   //prints "nom nom nom"
-duck.fly(); //prints "I'm flying!"
+duck.eat(); 
+duck.fly();
+ 
+//21 - Methods after inheritance 
+function Animal(){...}
+Animal.prototype.eat = function(){ 
+  console.log("Sound etc");
+}; 
 
+function Dog(){...}
+Dog.prototype = Object.create(Animal.prototype); 
+Dog.prototype.constructor = Dog; 
+Dog.prototype.bark = function(){ 
+  console.log("Woof sound!");
+};
 
-//21 Methods after inheritance 
-function Animal() { }
-Animal.prototype.eat = function() { console.log("nom nom nom"); };
-
-function Dog() { }
-Dog.prototype = Object.create(Animal.prototype);
-Dog.prototype.constructor = Dog;
-Dog.prototype.bark = function () {console.log("Woof!");}
-
-
-
-
-let beagle = new Dog();
-
+let beagle = new Dog(); 
 beagle.eat(); 
-beagle.bark(); 
+beagle.bark();
 
-//22 Override Methods 
-function Bird() { }
-
-Bird.prototype.fly = function() { return "I am flying!"; };
-
-function Penguin() { }
-Penguin.prototype = Object.create(Bird.prototype);
-Penguin.prototype.constructor = Penguin;
-
-Penguin.prototype.fly = function () {return "Alas, this is a flightless bird.";};
+//22 - Override Methods  
 
 let penguin = new Penguin();
 console.log(penguin.fly());
 
-//23 Mixin unrelated objects 
-let bird = {
-  name: "Donald",
-  numLegs: 2
+function Bird(){...}
+Bird.prototype.fly = function(){ 
+  return "I am flying!";
+}; 
+
+function Penguin(){...}
+Penguin.prototype = Object.create(Bird.prototype); 
+Penguin.prototype.constructor = Penguin; 
+Penguin.prototype.fly = function(){ 
+  Rturn "Alas, this is a flightless bird!";
 };
 
-let boat = {
+
+//23 - Mixin unrelated objects 
+let bird = {
+  name: "Donald",
+  numberLegs: 2
+};
+
+let boat = { 
   name: "Warrior",
   type: "race-boat"
 };
 
-
-let glideMixin = function (obj) { 
-     obj.glide = function () { 
-          console.log("On board");
-     }
+let glideMixin = function(obj){ 
+  obj.glide = function(){ 
+    console.log("On Board");
+  }
 };
-glideMixin(bird);
-glideMixin(boat);
+glideMixin(bird); 
+glideMixin(boat); 
 bird.glide(); 
 boat.glide();
 
-//24 Closue procet properties 
-function Bird() {
+//24 - Closue procet properties 
+function Bird(){ 
   let weight = 15;
-
-	// Method to acces weight of birds
-  this.getWeight = function() { return weight; }
+  this.getWeight = function(){ return weight; }
 }
 
-
-//25 Anonymous function
-(function() {
-  console.log("A cozy nest is ready");
-}) ();
-
-//26 Using IIFE create module 
-let funModule = (function () {
-  return {
-   isCuteMixin : function(obj) {
-  obj.isCute = function() {
-    return true;
-  };
-},
-   singMixin : function(obj) {
-  obj.sing = function() {
-    console.log("Singing to an awesome tune");
-  };
- }
-}
+//25 - Anonymous function
+(function(){ 
+  console.log("Some random text"); 
 })();
 
-
-
-
-
-
-
-
-
-
-
-
-
+//26 - Using IIFE create module  
+let funModule = (function(){ 
+  return {
+    isCuteMixin : function(obj){ 
+      obj.isCute = function(){ 
+        return;
+      };
+    },
+    singMixin : function(obj){
+      obj.sing = function(){
+        console.log("Some random text 02");
+      };
+    }
+  }
+})();
