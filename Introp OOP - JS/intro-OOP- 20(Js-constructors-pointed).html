@@ -1,0 +1,43 @@
+function Animal() { }
+function Bird() { }
+function Dog() { }
+
+Bird.prototype = Object.create(Animal.prototype);
+Dog.prototype = Object.create(Animal.prototype);
+
+
+Bird.prototype.constructor = Bird;
+Dog.prototype.constructor = Dog;
+
+let duck = new Bird();
+let beagle = new Dog();
+
+
+Add method after inheritances
+a constructor function that inherits its prototype object from a supertype constructor function can still have its own methods in addition to inherited methods. 
+
+Example 
+Bird as a constructor that inherits its proptotype from Animal . 
+
+function Animal () { } 
+Animal.prototype.eat = function () { 
+  console.log ("nom nom nom "); 
+}; 
+function Bird () { 
+Bird.prototype = Object.create(Animal.prototype);
+Bird.prototype.constructor = Bird; 
+}
+
+In addition to what is inherited from Animal, we want to add behavior that is unique to Bird objects. 
+
+Example with fly function 
+
+Bird.prototype.fly = function() { 
+  console.log.("i'm flying!");
+}; 
+
+Now instances of Bird will have both eat() and fly() methods. 
+
+let duck = new Bird(); 
+duck.eat();   //prints "nom nom nom"
+duck.fly(); //prints "I'm flying!"

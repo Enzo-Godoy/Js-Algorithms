@@ -1,0 +1,16 @@
+function Dog(name) {
+  this.name = name; 
+}
+
+let chew = "chewbacca";
+
+Dog.prototype = {
+  numLegs : 2 , 
+  eat : function() { 
+    console.log("Miaaa miaaa miaau"); 
+  }, 
+  describe : function (){ 
+    console.log("My name is " + Dog.name + "and i'm the best friend of" + chew);
+  }
+};
+

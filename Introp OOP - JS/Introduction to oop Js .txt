@@ -1,0 +1,239 @@
+Introduction to oop. 
+Object Oriented Programming 
+At its core, software development solves a problem or achieves a result with computation. 
+The software development process first defines a problem, then presents a solution. 
+
+As its name implies, object oriented programming organizes code into object definitions, These are sometimes called classes, and they group together data with related behavier. 
+
+The data is an object's attributes, and the behavior(or functions)are methods. 
+
+The object structure makes it flexivle within a program. Objects can transfer information by calling and passing data to another object's methods. Also, new classes can receive, or inherit, all the feature from a base or parent class. This helps to reduce repeated code. 
+
+Our choice of programming approach depends on a few factors. These include the type of problem, as well as how we want to structure our data and algorithms. 
+
+Objects : Things people see everyday. These are all objects : tangiable things people can observe and interact with. 
+
+The qualities or properties, define what makes up an object. Note that similar objects share the same properties, but may have different values for those properties. 
+
+Objects in Js are used to modelr eal-world objects, giving them properties and behavier just like their ral-world counterparts. 
+
+
+Example 
+
+let duck = {
+	name : "Aflac",
+	numLegs : 2 
+};
+
+----------------------------------------------
+
+Using dot notation. 
+object name followed by the name of the property name to access the value. 
+
+
+Objects can have a special type of property, called a method. 
+
+Methods are properties that are functions. This adds different behavior to an object. 
+
+Example. 
+let duck = {
+	 name : "Aflac",
+	 numLegs : 2, 
+	 sayName : function() {return "the name of this duck is " + duck.name + "."}
+};
+
+duck.sayName();
+// Returns " The name of this duck is Aflac."
+
+
+Make code more reusable with the this keyword. 
+
+
+sayName : function() { return "The name of this duck is " + duck.name + ".";}
+
+
+/// While this is a valid way to access the object's propert, there is a pitfall here. If the variable name changes, any code referencing the original name would need to be updated as well. In a short object definition, it isn't a problem, but if an object has many references to its properties there is a greater chance for error. 
+
+
+
+We can avoid these issues is with the this keyword. 
+
+let duck = {
+	 name : "Aflac", 
+	 numLegs : 2, 
+	 sayName : function () { return "The name of this duck is " + this.name + ".";}
+};
+
+
+
+this is a deep topic, and the above example is only one way to use it. In the current context this refers to the object that the method is associated with : duck. 
+
+
+Constructors are functions that create new objects. They define properties and behaviors that will belong to the new object. 
+
+Example of a constructor 
+
+function Bird () {
+	 this.name = "Albert"; 
+	 this.color = "blue"; 
+	 this.numLegs = 2 ; 
+}
+
+
+
+//Constructors often follows a few conventions 
+
+Constructors are defined with  a capitalized name to distinguish them from other functions that are not constructots. 
+
+Constructors use the keywords this to set properties of the object they will create. 
+Inside the constructor, this refers to the new object it will create. 
+
+Constructors define properties and behaviors instead of returnin a value as other functions might. 
+
+
+
+Use a constructor to create objects. 
+
+Example 
+
+function Bird () {
+	 this.name = "Albert"; 
+	 this.color = "blue"; 
+	 this.numLegs = 2; 
+	 // "this" inside the constructor always refers to the object being created 
+}
+
+let blueBird = new Bird();
+
+
+//Notice that the new operator is used when calling a constructor.
+Without the new operator, this inside the constructor would not point to the newly created object, giving unexpected results. 
+
+blueBirds - has all the properties defined inside the Bird constructor. 
+
+
+-----------------------------------------
+
+Extend constructors to receive arguments. 
+
+function Bird (name, color) {
+	this.name = name ; 
+	this.color = color ; 
+	this.numLegs = 2; 
+}
+
+Then pass in the values as arguments to define each unique bird into the Bird constructor. 
+
+let cardinal = new Bird ("Bruce", "red");
+}
+
+With this the constructor is more flexible. 
+They group objects together based on shared characteristics and behavior and define a blueprin that automates their creation. 
+
+
+Verify an Object's construct eith instanceof 
+
+Anytime a constructor functions creates a new object, that object is said to be an instance of its constructor. JS gives a convenient way to verify this with the instanceof operator. 
+instanceof allows us to compare an object to a constructor, returnin true or false based on wheter or not that object was created with the constructor. 
+
+Example : 
+
+let Bird = function () { 
+ this.name = name ; 
+ this.color = color; 
+ this.numLegs = 2; 
+}
+
+let crow = new Bird ("Alexis", "black"); 
+
+crow instanceof Bird; // => true
+
+
+If an object is created without using a constructor, instanceof will verify that it is not an instance of that constructor. 
+
+
+example 2 :
+
+let canary = { 
+ name : "Mildred", 
+ color : "Yellow", 
+ numLegs : 2 
+ }; 
+
+ canary instance of Bird; // => false
+
+ Understand Own properties. 
+
+ Example 
+
+ function Bird (name) { 
+  this.name = name ; 
+  this.numLegs = 2 ; 
+ }
+
+ let duck = new Bird ("Donald");
+ let canary = new Bird ("Tweety");
+
+
+
+ name and numLegs are called own properties, because they are defined directly on the instance object. 
+
+
+ The following code adds all of the own properties of duck to the array ownProps : 
+
+ let ownProps = []; 
+
+ for (let property in duck) {
+  if(duck.hasOwnProperty(property)) {
+   ownProps.puush(property);
+  }
+ }
+
+ console.log(ownProps);  //prints ["name", "numLegs"]
+
+
+ Use protype properties to reduce duplicate code 
+
+Got duplicates may not be an issue when there are only two instances, but imagine if there are millions of instances. That would be a lot of duplicated variables. 
+
+Using class prototype avoid this. The proptotype is an object that is shared among all instances of class. 
+
+Example with Bird prototype. 
+
+Bird.prototype.numLegs = 2 ; 
+
+Now all instances of bird have the numLegs property. 
+
+console.log(duck.numLegs);  // prints 2 
+console.log(canary.numLegs);  //prints 2 
+
+Since all instances automatically have the properties on the prototype, think of a prototype as a "recipe" for creating objects.
+
+
+Nearly every object in Js has a prototypr property wich is part of the constructor function that created it. 
+
+
+We've seen two kinds of properties : own properties and prototype properties. Own properties are defined directly on the object instance itself. And prototype properties are defined on the prototype. 
+
+Examples:
+
+function Bird(name) {
+	 this.name = name ; // own property 
+}
+Bird.prototype.numLegs = 2 ; // protype property 
+
+let duck = new Bird ("Donald"); 
+
+Here is how you add duck's own properties to the array ownProps and prototype properties to the array prototypeProps : 
+
+let ownProps = [] ; 
+let prototypeProps = []; 
+
+for( let property in duck) { 
+  if(duck.hasOwnProperty(property)){ownProps.push(property);}
+
+  else {  prototypeProps.push(property)  }
+}
+
+console.log(ownProps);  //prints ["name"] 
+console.log(prototypeProps);  //prints ["numLegs"]
