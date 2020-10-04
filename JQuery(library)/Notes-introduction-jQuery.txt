@@ -1,0 +1,150 @@
+Jquery notes. 
+Jquery is one Js's library. It's designed to simplify scripting done on the client side. jQuery's most recognizable characteristic is its dollar sign($) syntax. 
+ With it, we can easily manipulate elements, create animations and handle input events.
+
+Firstly before we can start using Jquery, we need to add some things to our HTML. 
+
+First, add a  script element at the top of our page. closed it on the following line. 
+
+Our browser will run any Js inside a script element, including jQuery.
+
+first line to add in our script , (i think its like a sample to choose an element and assigned to it a function). 
+
+   $(document).ready(function() { }); 
+
+   // Code put inside this function will run as soon as our browser has loaded our page. 
+
+   important beacuse without our document ready function, our code may run before our HTML is rendered wich would cause bugs. 
+
+   This is a document ready function. 
+
+   To write jQuery statement. All jquery functions start with a $, usually referred to as a dollar sign operator or as bling. 
+
+   jQuery often sleects an HTML element with a selector, the does something to that element. 
+
+
+Target elements by class using jQuery to added some effect or classes to them. 
+
+jquery's ".addClass()" function, allow us to add classes to elements. 
+
+just like with css declarations, we type a '.' before the class's name. 
+and in the same way with the id using a '#' before the id's name. 
+
+So there're three ways of targeting elements : 
+
+by tipe  $("button")
+by class $(".btn") 
+by id    $("#target1")
+
+Although it's possible to add multiple classes in a single .addClass() call. with individual selects ending up adding the three classes.
+
+
+In the same way we can add classes to an element with jQuery's  
+addClass() function, we cna remove them with jQuery' removeClass() function. 
+
+example 
+
+ $("#target2").removeClass("btn-default"); 
+
+
+ Change the Css of an Element Using jQuery 
+
+ jQuery has a function called .css() that allows us to change the css of an element. 
+
+ Example : 
+
+ $(#target1"").css("color", "blue"); 
+
+ Just a bit different from a normal Css declaration, because the CSS property and its value are in quotes, and separated with a comma instead of a colon . 
+
+ We can also change the non-Css properties of HTML elements. Example disable buttons. 
+
+   //When we disable a button, it will become grayed-out and can no longer be clicked. 
+
+   jQuery has a funtion called .prop() that allows us to adjust the properties of elements. 
+
+   Example 
+   $("button").prop("disabled", true) ; 
+
+
+   We can also change the text between the start and end tags of an element. We can even change HTML markup. 
+
+   jQuery(at this time it start to become redundant called jQuery all the time)  has a function called .html() that lets us add HTML tags and text within an element. Any content previously within the element will be completely replaced with the content we provide using this function. 
+
+   Example 
+   $("h3").html("<em>jQuery Playground</em>"); 
+
+
+
+   Also has a similar function called .text() that only alters text without adding tags. In other words, this function will not evaluate any HTMl tags passed to it, but will instead treat it as the text we want to replace the existing content with. 
+
+
+   We can remove also an HTML element from our page using jQuery. 
+
+   Has a function called .remove() that will remove an HTML element entirely. 
+
+   Use appendTo to move elements with jQuery. 
+   Allows us  to select HTML elements and append them to another element. 
+
+     example : 
+
+      $("#target4").appendTo("#left-well"); 
+
+
+      !-- Wtf Clone elements, this could be illegal O: 
+
+    Colen anElement Using jQuery. 
+
+    In addition to moving elements, we can also copy them from one place to another. 
+
+    with a function called clone() that makes a copy of an element 
+    ecample 
+    $("#target2").clone().appendTo("right-well"); 
+
+    When it involves sticking two function together. this is called function chaining and it's convenient way to get things done with jQuery. 
+
+    Every HTML element has a parent element from wich it inherits properties.. 
+
+    jQuery has a function called parent() that allows us to access the parent of wichever element we've selected. 
+
+    Example 
+
+    $("#left-well").parent().css("background-color","blue");  
+
+
+    Target the children of an element using jQuery. 
+
+    //when html elements are placed one level below another they are called children of that element. 
+
+    For this magic box of js tricks also has a function called children() that allows us to access the children of wichever element we've selected. 
+
+    Example 
+
+    $("#left-well").children().css("color","blue"); 
+
+
+    Target a Specific Child of an Element Using jQuery. 
+
+    We won't always have such neats ids to work with . 
+
+    Fortunately(seriously i mean your god it's js after all, sorry i'm tired talking with myself about how someone like you could read this and laugh some, never i'll find someone like you i wish nothing but a clean code for my dudes[song of adele]). 
+
+
+    Back to earth, We've got a Css selectors to target elements like 'nth-child(n)'  this allows us to select all the nth elements with the target class or element type. 
+
+    Example 
+
+    $(".target:nth-child(2)").addClass("animated bounce"));  
+
+
+   We can also target elements based on their postions using  ':odd' or  ':even' selectors 
+
+   jQuery is zero-indexed wich means the first element in a sleection has a position of 0. This  can be a little confusing as, counter-inuitively, ':odd' selects the second element (position 1), fourth element(position 3), and so on. 
+
+   example : 
+
+   $(".target:odd").addClass("animated shake"); 
+
+   //So important to remember even refers to the position of elements with a zero-based system in mind. 
+
+   

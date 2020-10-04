@@ -1,0 +1,16 @@
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal, 
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+// Add your code below this line
+
+let duck = Object.create(Animal.prototype);   // I'm refused to ..well i'll do it
+let beagle= Object.create(Animal.prototype);; //  I'm refused with more brave and ..well i'll do it
+
+duck.eat();   // It's  printing "nom nom nom"
+beagle.eat(); // It's  printing "nom nom nom" 
