@@ -1,0 +1,17 @@
+function largestOfFour(arr) {
+  let myArray = []; 
+
+  for(let i = 0 ; arr.length > i ; i++){
+
+      let myComparisonVer = arr[i][0]; 
+      for(let n = 1 ; arr[i].length > n ; n++){
+           if(arr[i][n] > myComparisonVer) {
+            myComparisonVer= arr[i][n];
+           }
+  
+       }myArray[i] = myComparisonVer;
+      }
+  return myArray;
+}
+
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
