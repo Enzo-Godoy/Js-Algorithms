@@ -11,7 +11,7 @@ and the behaviour are functions .
 Objects can transfer information by calling and passing data to another object's method. 
 
 Objects are represented by things that we see everyday. Tangible things that we can oberve and interact with. 
-The properties defines what makes up an object. 
+The properties defined are what makes up an object. 
 
 Objects in JS are use to model real-world object, giving them properties and behaviour just like their real-world 
 counterparts. 
@@ -24,7 +24,7 @@ counterparts.
 
  -- Accessing properties 
  We can acces the properties of an object by using 'dot notation' this means, 
- the name of the object followed by the property when the value need it's hold. 
+ the name of the object followed by the property where the value need it's hold. 
 
  E.G 
  let nameDuck = duck.name; 
@@ -40,7 +40,7 @@ counterparts.
  duck.sayName();
 
 /* 
-To avoid the constraint of reference properties within an object  that cna be changed afterward, the 'this' keyword 
+To avoid the constraint of reference properties within an object  that can be changed afterward, the 'this' keyword 
 can be use in order to extract values from the same context.
 */
 E.G  : 
@@ -62,7 +62,7 @@ function Bird(){
  
 /*
  ## Constructors follows a conventions where they use a capitalized name to be distinguished from other functions. 
- # Also they are used to set properties and behaviour instead of make some task or return a value.
+ # Also they are used to set properties and behaviour instead of make some task or return a value as a function does.
 	In order to manipulate values to be added to each object created from  a constructor the 'this' keyword 
 	it's used.
 */
@@ -116,7 +116,7 @@ The advantage of the constructor property is that it's possible to check for thi
 of object it is.
 */
   
--- Sample of a behaviour add to the prototype 
+-- Sample of a behaviour added to the prototype 
 Bird.prototype.eat = function(){ 
 	console.log("Quiet sound made during eating");
 }
@@ -168,7 +168,7 @@ typeOf Bird.protype;  /* =>>> Object */
 
   Duck (subType) > Bird (superType).
 
-  Object is a supertype for all objects in Javascript. And for this any object can use the 'hasOwnProperty' method. 
+  Object is a supertype for all objects in Javascript. And for this any object can use the 'hasOwnProperty' function. 
 
   Concept >> D.R.Y (Don't Repeat Yourself)
 
@@ -189,8 +189,8 @@ Dog.prototype = {
 	}
 }; 
 
- /* Both of the them implments the same describe function, solved by using the DRY concept 
- Adding the same behaviour to the superType (parent) of boths 'Animales'*/
+ /* Both of the them implements the same described function, solved by using the DRY concept 
+ Adding the same behaviour to the superType (parent) of boths 'Animals'*/
  function Animal(){ 
  	constructor: Animal, 
  	describe: function(){ 
@@ -206,248 +206,155 @@ Dog.prototype = {
  };
 
 
- 
-
-Inherit Behaviors from a Supertype 
-Example : 
-
-function Animal () {}
-Animal.prototypr.eat = function () { 
- console.log("nom nom nom"); 
-
-}; 
-
-We need to rehuse the method inside our object without defininf then again. To do this we a use a technique called inheritance. 
-
-Make an instance of the supertype (or parent) 
-
-We already know one way to create an instance of Animal using the new operator. 
-
-There are some disadventages when using this syntax for inheritance wich are too complex for the scope .
+-- Also we can create a new object whom inherit from its superparent by using Object.create(arg)
+Object.create(obj); 
 
 
-let animal = Object.create(Animal.protype); 
+/* 
+When an object inherits its prototype from another object, it also inherits the supertype's constructor
+property 
+*/
 
-Object.create(obj) creates a new object, and sets obj as the new object's prototype. 
-
-Recall that the prototype is like the "recipe" for creating an object. By setting the prototype of animal to be Animal's prototype, we are effectively giving the animal instance the same "recipe" as any other instance of Animal. 
-
-animal.eat(); //prints "nom nom nom"
-
-Set the Child's prototype to an instance of the parent. 
-
-Set the prototype of the subtype(or child). 
-
+-- Some issue by bad use 
+function Bird(){}
 Bird.prototype = Object.create(Animal.prototype); 
-
-Remeber i'm not just copying all, you really think that, well i'm aware of that and dissapointed on you, try again. 
-
-let duck = new Bird("Donald"); 
-duck.eat();  //prints "nom nom nom"
-
-duck inherits all of Animal's properties, including the eat method. 
-
-Reset an inherited Constructor Property. 
-
-When an object inherits its prototype from another object, it also inherits the supertype's constructor property. 
-
-Example :
-
-function Bird ()  { }
-Bird.prototype = Object.create(Animal.protype); 
 let duck = new Bird(); 
-duck.constructor // function Animal () {...}
+duck.constructor /* It returns function Animal(){...}  */ 
 
-But duck and all instances of Bird should show that they were constructed by Bird and not Animal. To do so, we can manually set bird's constructor property to the bird object : 
+// To avoid this we set the bird's contructor to the bird object .
+duck.constructor  /* Now returns function Bird(){...} */
 
-Bird.prototpye.constructor = Bird ; 
-duck.constructor // function Bird () {...}
+ 
+ -- Random Sample 
+ function Animal() {...}
+ Animal.prototype.eat = function() { console.log("Quiet sound while eating"); }; 
 
-function Animal() { }
-Animal.prototype.eat = function() { console.log("nom nom nom"); };
+ function Dog(){...} 
+ Dog.prototype = Object.create(Animal.prototype); 
+ Dog.prototype.constructor = Dog; 
+ Dog.prototype.bark = function() { console.log("Woof!"); }
 
-function Dog() { }
-Dog.prototype = Object.create(Animal.prototype);
-Dog.prototype.constructor = Dog;
-Dog.prototype.bark = function () {console.log("Woof!");}
+ let beagle = new Dog(); 
+ beagle.eat(); 
+ beagle.bark();
 
 
+/* 
+We can make na object to inherits its behaviours from another object 
+by cloning its prototype object
+*/
+-- Sample of creation of ChildObject with inheritance from superType
+ChildObject.prototype = Object.create(ParentObject.prototype); 
 
+-- Also the ChildObject can declare its own property by setting them into the prototype 
+ChildObject.prototype.methodName = function() {...}; 
 
-let beagle = new Dog();
+ /* 
+ In order to override an inhrited property we need just 
+ to ad another property with the same value to the subType.prototype 
+ */ 
 
-beagle.eat(); 
-beagle.bark(); 
+ -- Sample of overring superType prototype 
+ function Animal(){}
+ Animal.prototype.eat = function() { return "some" }; 
 
-Override inherited methods. 
-
-We've learned that an object can iherit its behavior (methods) from another object by clonin its prototype object : 
-
-ChildObject.prototype = Object,create(ParentObject.prototype); 
-
-Then the ChildObject received iits own method by chaining them onto its prototype : 
-
-ChilObject.prototype.methodName = function() {...}; 
-
-It's possible to everride an inherited method. it's done the same way - by adding a method to childObject.prototype using the same method name as the one to override. 
-
-Example of overriding the eat() method inherited from Animal : 
-
-function Animal () { }
-Animal.prototype.eat = function () {  return "nom nom nom" };
-
-function Bird () { }
-
-// Inherit all method from Animal 
-Bird.prototype = Object.create(Animal.prototype); 
-
-//Bird.eat() overrides Animal.eat() 
-Bird.prototype.eat = function () { 
-    return "peck peck peck";
+function Bird() {...}
+Bird.prototype = Object.create(Animal.prototype);
+Bird.prototype.eat = function() {
+	return "Some new value";
 }; 
 
+/* 
+We use a Mixin to add common behaviour between unrelated objects 
+We know at this time that behaviours can be share through inheritance. 
+However, there are cases when inheritance is not the best solution. 
+E.G : Bird, Airplane 
+Two unrelated objects, but that could share the behaviour task 'fly' 
+in this case the better option it's to use 'mixin' . 
+	A mixin allows other objects to use a collection of functions 
+*/ 
+let flyMixin = function(obj){
+	obj.fly = function(){ 
+		console.log("Flying, etc!");
+	}
+}; 
 
-If we have an instance   let duck = new Bird () ; and we call duck.eat(), this is how Js looks for the method on duck's prototype chain : 
-
-1. duck => Is eat() defined here ? No.
-
-2. Bird => Is eat() defined here ? Yes. Execute it and stop searching.
-
-3. Animal => Is eat() defined here ? is also defined, but Js stopped searching before reaching this level.
-
-4. Object => Is eat() defined here ? Js stopped searching before reaching this level.
-
-
-Use a Mixin to add common behavior between unrelated objects. 
-
-As we have seen, behavior is shared though inheritance. However, there cases when inheritance is not the best solution. Inheritances does not work well for unrelated objects like Bird and Airplance. 
-For unrelated objects, it's better to use mixinx. A mixin allows other object to use a collection of functions. 
-
-let flyMixin = function(obj) { 
-  obj.fly = function () { 
-  console.log("Flying, wooosh!");
-  }
-};
-
-The flyMixin takes any object and gives it the fly method. 
-
+-- This mixin takes an obj as arg an gives it add to it the 'fly' behaviour 
 let bird = { 
- name : "Donald", 
- numLegs : 2
+	name : "Pio", 
+	numberLegs : 2
 }; 
 
 let plane = { 
-  model : "777",
-  numPassengers : 524
+	model : "Boeing-777",
+	numberPassengers : 524 
 }; 
 
-
+ 
 flyMixin(bird); 
-flyMixin(plane); 
+flyMixin(plane);
+ 
+    /* Now boths has the same fly behaviour added */ 
+
+/* 
+We can use closure to protect properties within an object from being externally modified. 
+The simplest way to make properties private it's by creating a variable within the constructor 
+function versus being globally.
+	This way, the property can only be accesses and change by methods also within the constructor function
+*/ 
+-- Sample of a Constructor with private property 
+function Bird(){ 
+	let hatchedEgg = 10 ; 
+	this.hatchedEggCount = function() {
+		return hatchedEff;
+	};
+}
+
+let ducky = new Bird(); 
+ducky.getHatchedEggCount(); 
+
+ /* 
+ In JS a function always has access to the context in wich it was created. 
+ This it's called closure 
+
+ Another common thing in JS , it's the execution of a function after being created (IIFE)
+ IIFE : Immediate Invoked Function Expression
+
+ -- Sample of an Anynonymous function that executes right away. 
+ (function(){ 
+ 	console.log("chirp, chirp!"); 
+ })();
 
 
-Here bird and plane are passed into flyMixin, wich then assigns the fly function to each object, Now bird and plane can both fly: 
-
-bird.fly();  // prints "Flying, wooosh!"
-plane.fly();  // prints "Flying, wooosh!"
-
-Note how the mixin allows for the same fly method to be reaused by unrelated objects bird and plane. 
-
-
-Use closure to protect properties within an object from Being Modified Externally. 
-
-The public property are considered public because it can ba accessed and changed outside of bird's definition. 
-
-example : 
-
-bird.name = "Larah"; 
-
-Therefore, any part of our code can easily change the name of bird to any value. Think about thing like passwords and bank accounts being easily changeable by any part of our codebase. 
-
-The simples way to make properties private is by creating a variable within the constructor function versus available globally. This way, the property can only be accessed and change by methods also within the constructor function.
-
-
-function Bird()  { 
-   let hatchedEgg = 10  // private property 
-
- // publicly available method that a bird object can use
-   this.gatHatchedEggCount = function ()  { 
-			return hatchedEgg; };
+A IIFE is often use to group relates functionality into a single object or module. 
+ */ 
+-- Sample of an IIFE grouping functionality 
+function glideMixin(obj){ 
+	obj.glide = function(){ 
+		console.log("Gliding on the water");
+	};
+}
+function flyMixin(obj){
+	obj.fly = function(){ 
+		console.log("Flying, woosh!");
+	};
 }
 
 
- let ducky = new Bird (); 
- ducky.getHatchedEggCount();   // returns 10.
+/* This two function are group in an IIFE as follow */ 
+let motionModule = (function(){ 
+	return { 
+		glideMixin: function(obj){
+			console.log("Gliding on the water");
+		}, 
+		flyMixin: function(obj){ 
+			console.log("Flyinh, woosh!");
+		};
+	}
+})();     /* The two parenthesis at last, indicated the immediate execution */ 
 
 
- Here hetHachedEggCount is a privileged method, because it has access to the private variable hatchedEgg. This is possible because hatchedEgg is declared in the same context as getHachedEggCount. In Js, a function always has access to the context in wich it was created. This is called closure. 
-
-
- Understand the immediately invoked function expression (IIFE)
-
- A common patter in Js is to execute a function as soon as it is declared. 
-
-
-//This is an anonymous function expression that executes right away.
- (function () { 
-  console.log("Chirp, chirp!"); 
-  })  ();
-
- // Outputs "Chirp, chirp!" immediately
-
-
- Note that the function has no name and is not stored in a variable. The two parentheses () at the end of the funtion expression cause it to be immediately executed or invoked. This pattern is known as an immediately invoked function expression or IIFE. 
-
- Use an IIFE to create a Module 
-
- An immediately invoked function expression(IIFE) is often used to group related functionality into a single object or module. 
-
- example 
-
-
- function glideMixin(obj) { 
-   obj.glide = function() { 
-  console.log ("Gliding on the water"); 
- }; 
-}
-
-function flyMixin(obj) { 
-  obj.fly = function() { 
-    console.log("Flying, wooosh!"); 
-   };
-}
-
-
-We can group these mixins into a module as follows. 
-
-let motionModule = (function () { 
-  return { 
-    glideMixin : function (obj)  {
-       console.log("Gliding  on the water");
-       };
-  },
-  flyMixin : function (obj)  { 
-   obj.fly = function () { 
-     console.log("Flying, wooosh!"); 
-     };
-    }
-  }
-}) (); 
-
-//The two parentheses cause the function to be inmediately onvoked.
-
-
-
-Note that now we have an immediately invoked function expression (IIFE) that returns an object motionModule. This returned object contains all of the mixin behaviors as properties of the object.
-
-
-The advantage of the module pattern is that all of the motion behaviors can be packaged into a single object that can then be used by other parts of our code. 
-
-example of using it. 
-
-motionModule.glideMixin(duck); 
-duck.glide(); 
-
-
-
-})
+ /* 
+ Now we have an Immediate Invoked Function Expression (IIF) that returns an object motionModule. 
+ This returned object contains all of the mixins behaviours as properties of the object. 
+ */
