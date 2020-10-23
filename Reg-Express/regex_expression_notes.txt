@@ -170,10 +170,57 @@ let multipleA = /a{3,5}h/;
 multipleA.test(a4);  // Returns true.
 multipleA.test(a2);  // Returns false.
 
-Some
+Sometimes the paterns we want to search for may have parts of it that may or may not exist. However, it may be important to check for them nonetheless. 
+We can specify the possible existence of an element with a question mark, ?. This checks for zero or one of the preceding elements. 
+	We can think of the symbols as saying the previous element are option 
+	
+-- Sample using ? char pattern 
+let american = "color"; 
+let british  = "colour"; 
+let rainbowRegex = /colou?r/; 
+rainbowRegex.test(american);  //Returns true.  
+rainbowRegex.test(british);   //Returns true.
 
+Look aheads are patterns that tell JS to look-ahead in our string to check for patterns further along. This can be useful when we want to search for multiple patterns 
+over the same string. 
 
+There are two kinds of lookaheads : Positive/negative . 
 
+A positive lookahead >> (?=...) 
+A negative lookahead >> (?!...) 
+
+A positive lookeahead, will look to make sure the element in the search pattern is there, but won't actually match it. 
+A negative lookahead will look to make sure the elemenet in the search patter is not there. 
+
+-- Sample using positive, negative lookahead 
+let quit  ="qu#; 
+let notquit = "qt"; 
+let quRegex = /q(?=u)/; 
+let qRegex = /q(?!u)/; 
+quit.match(quRegex);  //Returns ["q"]
+noquit.match(qRegex); //Returns ["q"] 
+
+Some patterns we search for will occur multiple times in a string. It is wasteful to manually repeat that regex. There is a  better way to specify when we have multiple
+repeat substrings in our string. 
+We can search for repeat substrings using capture groups. Parentheses, (and), are used to find repeat substrings. We put the regex of the pattern that will repeat
+in between the parentheses. 
+
+To specify where that repeat tring will appear, we  use a baclslask (\) and then a number. This number starts at 1 and increases with each additional capture group
+we use. And example would be '\1' to match the first group. 
+
+-- Sample using repeater matcher within a capture group 
+let repeatStr = "regex regex"; 
+let repeatRegex = (\w+)\s\1/; 
+repeatRegex.test(repeatStr);   //Returns true.
+repeatStr.match(repeatRegex);  //Returns ["regex regex", "regex"] 
+
+We can search and replace text in a string using '.replace()' method on a string. The inputs for replace i first the regex pattern we want for, 
+then the string to replace the match or a function to do something. 
+
+-- Sample using the replace method for a string 
+let wrongText = "The sky is silver"; 
+let silverRegex = /silver/; 
+wrongText.replace(silverRegex, "blue");   //Returns "The sky is blue"
 
 // Sample of a requirement of regex being generated. 
 	User story : 
