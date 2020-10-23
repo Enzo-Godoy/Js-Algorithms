@@ -1,0 +1,120 @@
+-- Sample of sass vars 
+<style type='text/sass'> 
+	$text-color: red; 
+	.header {
+		text-align: center;
+	}
+	.blog-post, h2 {
+		color: $text-color;
+	}
+</style> 
+<h1 class="heaer">Learn sass </h1> 
+	<div class="blog-post"> 
+		<h2>Some random message.</h2> 
+		<p>Some random paragraph.</p> 
+	</div>
+	<div class="blog-post"> 
+		<h2>Some random message  02.</h2> 
+		<p>Some random paragraph 02.</p> 
+	</div>
+	<div class="blog-post"> 
+		<h2>Some random message  03.</h2> 
+		<p>Some random paragraph 03.</p> 
+	</div>
+	
+	
+-- Sample of nesting rules sass 
+<style type='text/sass'> 
+	.blog-post {
+		h1 {
+			text-align : center; 
+			color: blue;
+		}
+	}
+	p {
+		font-size: 20px;
+	}
+</style>
+<div class="blog-post"> 
+	<h1>Blog title </h1> 
+	<p>Some random text</p> 
+</div> 
+
+-- Sample using mixins 
+<style type='text/sass'> 
+	@mixin border-radius($radius) {
+		-webkit-border-radius: $radius; 
+		-mox-border-radius: $radius; 
+		-ms-border-radius : $radius; 
+		box-border-radius : $radius;
+	}
+	#awesome {
+		@include border-radius(15px); 
+		width: 150px;
+		height: 150px; 
+		background-color: green;
+	}
+</style> 
+<div id="awesome"></div>
+
+
+-- Sample using if/else_if statements 
+<style type='text/sass'> 
+	@mixin border-stroke ($val) {
+		@if $val == light {
+			border: 1px solod black;
+		}
+	}
+	@else if $val == medium {
+		border: 3px solid black;
+	}
+	@else if $val == heavy {
+		border: 6px solid black;
+	}
+	@else {
+		border: none;
+	}
+	
+	#box {
+		width: 150px; 
+		height: 150px; 
+		background-color: red; 
+		@include border-stroke(medium);
+	}
+</style>
+<div id="box"></div>
+
+
+-- Sample using @for directives. 
+<style type='text/sass'> 
+	@for $j from 1 through {
+		.text-#{$j} {font-size: 10px * $j;}
+	}
+</style>
+<p class="text-1">Sample text 01</p>
+<p class="text-2">Sample text 02</p>
+<p class="text-3">Sample text 03</p>
+<p class="text-4">Sample text 04</p>
+<p class="text-5">Sample text 05</p>
+
+
+-- Sample using map directive
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
