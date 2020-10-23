@@ -99,22 +99,54 @@
 
 
 -- Sample using map directive
+<style type='text/sass'> 
+	@each $color in blue, black, red {
+		.#{$color}-bg {background-color: $color; }
+	}
+	div {
+		height: 200px;
+		width: 200px;
+	}
+</style>
+<div class="blue-bg"></div>
+<div class="black-bg"></div>
+<div class="red-bg"></div>
 
+-- Sample using while sass directive 
+<style type='text/sass'> 
+$numberClass: 1; 
+@while $numberClass < 5 {
+	.text-#{$numberClass}{ font-size: 5px * $numberClass}
+	$numberClass: $numberClass + 1;
+}
+</style> 
+<p class="text-1">Sample using 01</p>
+<p class="text-2">Sample using 02</p>
+<p class="text-3">Sample using 03</p>
+<p class="text-4">Sample using 04</p>
 
+-- Sample using import directive 
+@import 'partial_file_name' 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- Sample using extend directive 
+<style type='text/sass'> 
+	h3{
+		text-align: center;
+	}
+	.info{
+		width: 200px; 
+		border: 1px solid black;
+		margin: 0 auto;
+	}
+	.info-important {
+		@extend .info; 
+		background-color: margenta;
+	}
+</style>
+<h3>Sample 01</h3>
+<div class="info-important"> 
+	<p>Sample of text using CSS style.</p> 
+</div> 
+<div class="info"> 
+	<p>Sample of text using CSS style 02.</p> 
+</div> 
