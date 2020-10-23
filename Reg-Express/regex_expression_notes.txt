@@ -1,0 +1,128 @@
+ Regex Expressions : 
+ Regular expressions are special strings that represent a search pattern. Also known as "regex" or "regexp", they help programmers match, search, and replace text.
+ Regulare expressions can appear cryptuc because a few character have special meaning. The goal is to combine the symbols and text into a pattern that matches 
+ what we want, but only what we want. 
+ 
+Regulare expressions are used in programming languages to match parts of strings. We create patterns to help to do that matching. 
+If we want to find the word "the" in the string "The dog chased the cat", we could use the following expresion '/the/' 
+
+Using the text method : 
+test() >> Takes a regex, applies it to a string (wich is plced inside the parentheses), and returns true or false if our pattern finds something or not. 
+
+-- Sample using the text method. 
+let testStr = "freeCodeCamp"; 
+let testRegex = /Code/; 
+testRefex.test(testStr); 
+
+Using regex it's powerful to search single strings, but it's limited to only one pattern. We can search for mutiple patterns using the alternation or OR operator : '|'. 
+
+Aside from literal matcheds. Sometime we use could use them to match case differences. 
+Case difference >> Can be uppercase letters, lowercase letters. 
+
+In order to catch these literals we use 'flags' appending them to the regex 
+-- Sample of a regex with a flag 
+/pattern_searched/i   >> 'i' represents the flag. In this case it means ignore the case(upper, lower, etc).
+
+We can use the '.match()' emthod, applying it to a string and pass as arg a regex expression. 
+-- Sample of using the match method with a regex 
+"Hello, World!".match(/Hello/); 
+
+let ourStr = "Regular Expressions"; 
+let ourRegex = /expressions/; 
+ourStr.match(ourRegex); 
+
+
+Sometimes we don't  need to know exact characters in our patterns. In order to act in this situation we use the wildcard character : ('.') 
+thewildcard charactr '.' will match any one character. 
+
+.. Sample using the '.' wildcard 
+let humStr = "I'll hum a song"; 
+let hugStr = "Bear hug"; 
+let huRegex = /hu./; 
+humStr.match(huRegex); 
+hugStr.match(huRegex); 
+
+We can search for a literal pattern with some flexibility with character classes. 
+Character classes allow us to define a group of character we wish to match by placing them inside square ( [and] ) brackets. 
+
+For example, we want to match "bag", "big", "bug" but not "bog". We can careata a regex as the next one : 
+/b[aiu]g/ 
+
+[aiu] >> The character class that will only match the characters "a", "i", "u". 
+
+-- Sample using class pattern 
+let bigStr = "big"; 
+let bagStr = "bag"; 
+let bugStr = "bug"; 
+let bogStr = "bog"; 
+let bgRegex = /b[aiu]g/; 
+bigStr.match(bgRegex);  // Returns ["big"]
+bagStr.match(bgRegex);  // Returns ["bag"]
+bugStr.match(bgRegex);  // Returns ["bug"]
+bogStr.match(bgRegex);  // Returns null
+
+There is a buit-in feature that makes this short and simple. 
+Inser a character set, we can define a range of characters to match using a hyphen character '-' 
+
+-- Sample using a hyphen within a class pattern 
+let catStr = "cat"; 
+let batStr = "bat" 
+let matStr = "mat"; 
+let bgRegex = /[a-e]at/;
+catStr.match(bgRegex); //Returns ["cat"]
+batStr.match(bgRegex); //Returns ["bat"] 
+mstStr.match(bgRegex); //Returns null
+
+
+The hyphen (-) to match a range of characters is not limited to letters. It also works to match a range of numbers. 
+Forexample, /0-5/ matches any number between 0 and 5, including the 0 and 5. 
+also, it is possible to combine a range of letters and numbers in a single character set. 
+
+let jennyStr = "jenny86755309"; 
+ley myRegex = /a-z0-0/ig; 
+jennyStr.match(myRegex); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
