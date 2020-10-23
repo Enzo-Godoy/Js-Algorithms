@@ -1,0 +1,174 @@
+Sass : 
+
+Sass >> Sintactically Awesome StyleSheets. 
+Is a lenguage extension of CSS. it adds features that aren't available using basic css Syntax. 
+
+Sass is a Pre-processor, it takes code written using Sass syntaxt, and converts it into basic css. 
+This allows us to create variables, nest CSS rules into others, and import other Sass files, among other things. 
+Resulting in a  more compact code, easier to read. 
+
+There are two syntaxes avaible for Sass : 
+	* sccs (sassy css). 
+	* sass. 
+	
+sccs : Is an extension of the syntax of CSS. 
+sass : Intended syntax >> uses indentation rather than brackets to indicate nesting of selectos, and newlines rather than semicolons to separate properties. 
+						  Files using this syntax have the '.sass' extension. 
+						  
+One feature od sass  that's different than css is it uses variables. 
+	In js, variables are defined using the 'let' and 'const' keywords. In sass, variables start with a '$' followed by the variable name. 
+	
+E.G : 
+$main-fonts : Arial, sans-serif; 
+$headings-color : green ; 
+
+// Sample Using the variables 
+h1 {
+	font-family: $main-fonts;
+	color: $heading-color;
+}
+
+// Sample of nesting rules . 
+nav {
+	background-color : red; 
+		ul {
+			list-style: none;
+			li {
+				display: inline-block;
+			}
+		}
+}
+
+
+In sass, a mixin is  a group of css declaratioons that can be reused throughout the style sheet. In sass the definition starts with @mixin followed by a custom name. 
+The parameters are optionals. 
+
+// Sample of mixing in CSS
+div {
+  -webkit-box-shadow : 0px 0px 4px #fff; 
+  -moz-box-shadow : 0px 0px 4px #fff;
+  -ms-box-shadow : 0px 0px 4px #fff;
+  box-shadow : 0ppx 0px 4px #fff;	
+}
+
+// Sample of mixing in SASS
+@mixin box-shadow ($a,$b,$c,$dCol) { 
+ -webkit-box-shadow : $a $a $a $dCol; 
+  -moz-box-shadow : $a $b $c $dCol;
+  -ms-box-shadow : $a $b $c $dCol;
+  box-shadow : $a $b $c $dCol;
+} 
+
+So any time a rule is needed, only a single line calling the mixing replaces having to type all the vendor prefixes. A mixin is called with 
+the @include directive : 
+
+// Sample using @directive 
+div {
+	@include box-shadow ( npx, npx, npx, #color);
+}
+
+We can add @if, @else clauses to add logic to our rules set. 
+
+// Sample with if rules
+@mixin make-bold($bool) {
+	@if $bool = true {
+		font-weight: bold;
+	}
+}
+
+
+// Sample with if rules, else if 
+@mixin text-effect ($val) {
+	@if $val == danger {
+		color : red;
+	}
+	@else if $val == alert {
+		color : yellow;
+	}
+	@else if $val == success {
+		color : green;
+	}
+	@else {
+		color : black;
+	}
+}
+
+We can add @for, clase to loop through a set of rules. 
+// Sample with @for directive 
+@for $i from 1 through 12 {
+	.col-#{$i} {width: 100%/12 * $i; }
+}
+
+-- The code before interpreted should be as follow 
+.col-n {
+	width : assign x n(i);
+}
+.col-2 {
+	width : assign x n(2);
+}
+.col-n3 {
+	width : assign x n(3);
+}
+.col-4 {
+	width : assign x n(4);
+}
+..
+
+We can use @each to map over items in a list. 
+// Sample using @each directive 
+@each $color in blue, red, green {
+	.#{$color}-text {color:$color;}
+}
+
+We can use the @while directive as a looper. 
+//Sample with a while sass 
+$x : 1; 
+@while $x < 13 {
+	.col-#{$x} { width: 100 %12 * $x; }
+	$x : $x + 1;
+}
+
+
+Partials in sass are separate files that holds segments of css code. 
+ This way the code can be keeped in a modular format. 
+ 
+Names for partials start with underscore ('_') character, wich tells sass it's a small segment of css and not to convert it  into a css file. Also, sass files end 
+with the .sccs file extension. To bring the code from a 'partial' file we se the directive @import. 
+
+//Sample importing partial file '_mixins.scss' 
+@import 'mixin' 
+
+The underscore isn't needed in the import statement- sass understand it's a partial. Once a partial is imported into a file, all variables, mixins, and other code
+are available to use. 
+
+Sass has a feature called extend that makes it easy to borrow the css rules from one element and build upon them in another. 
+
+// Sample extending a rule (.panel)
+.panel {
+	bakground-color : red; 
+	height: 70px; 
+	border : 2px solid green;
+}
+
+.big-panel {
+	@extend .panel; 
+	width:  150px; 
+	font-dize : 3em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
