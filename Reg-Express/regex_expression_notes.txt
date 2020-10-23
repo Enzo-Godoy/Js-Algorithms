@@ -1,0 +1,270 @@
+ Regex Expressions : 
+ Regular expressions are special strings that represent a search pattern. Also known as "regex" or "regexp", they help programmers match, search, and replace text.
+ Regulare expressions can appear cryptuc because a few character have special meaning. The goal is to combine the symbols and text into a pattern that matches 
+ what we want, but only what we want. 
+ 
+Regulare expressions are used in programming languages to match parts of strings. We create patterns to help to do that matching. 
+If we want to find the word "the" in the string "The dog chased the cat", we could use the following expresion '/the/' 
+
+Using the text method : 
+test() >> Takes a regex, applies it to a string (wich is plced inside the parentheses), and returns true or false if our pattern finds something or not. 
+
+-- Sample using the text method. 
+let testStr = "freeCodeCamp"; 
+let testRegex = /Code/; 
+testRefex.test(testStr); 
+
+Using regex it's powerful to search single strings, but it's limited to only one pattern. We can search for mutiple patterns using the alternation or OR operator : '|'. 
+
+Aside from literal matcheds. Sometime we use could use them to match case differences. 
+Case difference >> Can be uppercase letters, lowercase letters. 
+
+In order to catch these literals we use 'flags' appending them to the regex 
+-- Sample of a regex with a flag 
+/pattern_searched/i   >> 'i' represents the flag. In this case it means ignore the case(upper, lower, etc).
+
+We can use the '.match()' emthod, applying it to a string and pass as arg a regex expression. 
+-- Sample of using the match method with a regex 
+"Hello, World!".match(/Hello/); 
+
+let ourStr = "Regular Expressions"; 
+let ourRegex = /expressions/; 
+ourStr.match(ourRegex); 
+
+
+Sometimes we don't  need to know exact characters in our patterns. In order to act in this situation we use the wildcard character : ('.') 
+thewildcard charactr '.' will match any one character. 
+
+.. Sample using the '.' wildcard 
+let humStr = "I'll hum a song"; 
+let hugStr = "Bear hug"; 
+let huRegex = /hu./; 
+humStr.match(huRegex); 
+hugStr.match(huRegex); 
+
+We can search for a literal pattern with some flexibility with character classes. 
+Character classes allow us to define a group of character we wish to match by placing them inside square ( [and] ) brackets. 
+
+For example, we want to match "bag", "big", "bug" but not "bog". We can careata a regex as the next one : 
+/b[aiu]g/ 
+
+[aiu] >> The character class that will only match the characters "a", "i", "u". 
+
+-- Sample using class pattern 
+let bigStr = "big"; 
+let bagStr = "bag"; 
+let bugStr = "bug"; 
+let bogStr = "bog"; 
+let bgRegex = /b[aiu]g/; 
+bigStr.match(bgRegex);  // Returns ["big"]
+bagStr.match(bgRegex);  // Returns ["bag"]
+bugStr.match(bgRegex);  // Returns ["bug"]
+bogStr.match(bgRegex);  // Returns null
+
+There is a buit-in feature that makes this short and simple. 
+Inser a character set, we can define a range of characters to match using a hyphen character '-' 
+
+-- Sample using a hyphen within a class pattern 
+let catStr = "cat"; 
+let batStr = "bat" 
+let matStr = "mat"; 
+let bgRegex = /[a-e]at/;
+catStr.match(bgRegex); //Returns ["cat"]
+batStr.match(bgRegex); //Returns ["bat"] 
+mstStr.match(bgRegex); //Returns null
+
+
+The hyphen (-) to match a range of characters is not limited to letters. It also works to match a range of numbers. 
+Forexample, /0-5/ matches any number between 0 and 5, including the 0 and 5. 
+also, it is possible to combine a range of letters and numbers in a single character set. 
+
+let jennyStr = "jenny86755309"; 
+ley myRegex = /a-z0-0/ig; 
+jennyStr.match(myRegex); 
+
+We have created a set of characters that we want to match, but we could also create a set of characters that we don't want to match. These types of characters sets 
+are called 'negated character set'. 
+
+We place a care character (^) after the opening bracket and before the character that we don't want to match. 
+-- Sample suing the negated char 
+/[^aeiou]/ 
+
+If we need to match a character (or group of characters) that appears one or more times in a row. We can use the '+' character to check if that is the case. 
+The character pattern has to be present consecutively. That ism the character has to repeat one after another. 
+
+/a+g/ >> matchs : "aabc" as ["aa"] 
+
+In reg.expression, a greedy match finds the longest possible part of a string that gits the regex pattern and returns it as a math. 
+The alternative is a lazy match, wich finds the smalles possible part of the string that satisfies the regex pattern. 
+
+Regular expression are by default greedy. 
+We used the caret character (^) inside a character set to create a 'negated character set' in the form [^pattern_to_avoid] , but outsie of a character set 
+the caret us used to search for patterns at the beginning of strings .
+
+-- Sample using caret to search at the begginning. 
+let firstString = "Ricky is first and can be found."; 
+let firstRegext = /^Ricky/; 
+firstRegext.test(firstString);   //returns true
+
+
+let notFirst = "You can't find Ricky now "; 
+firstRegex.test(notFirst);  	//returns false. 
+
+In order to search at the end of strings we use the dollar sign character $  
+-- Sample using $ symbol to search at the end of the string.
+let thetheEnding = "This is a never ending story"; 
+let storyRegex = /story$/; 
+storyRegex.test(theEnding);  //Returns true 
+
+let notEndnding = "Sometimes a story will have to end"; 
+storyRegex.text(notEnding);  //Returns false. 
+
+Using character classes, we are avle to search for all letters of the alphabet with [a-z] 
+This kind of class character class is common enough that there is a shortcut for it, although it includes a  few characters as well. 
+The closes character class in JS to match the alphabet is \w. This shortcut is equal to [A-Za-z0-9] 
+This character class matchers upper and lowercase letters plus numbers. This character class also includes the underscore character (_). 
+
+-- Sample using general search and char that represents it. 
+let longHand = /[A-Za-z0-9_]+/; 
+let shortHand = [\w+/; 
+let numbers = "42"; 
+let varNames = "important_var"; 
+longHand.test(numbers);     //Returns true.
+shortHand.test(varNames);   //Returns true.
+shortHand.test(numbers);    //Returns true.
+shortHand.test(varNames);   //Returns true. 
+
+We can search for the opposite pattern by Making the uppercase of the same char used previously [\w] >> [\W]
+
+-- Sample using opposite pattern 
+let shortHand = /\W/; 
+let numbers ="42%"; 
+let sentence ="Coding!"; 
+numbers.match(shortHand);  //Returns ["%"]
+numbers.match(shortHand);  //Returns ["!"] 
+
+The shortcut patter char to look for digit is '\d' with a lowercase d. This is equal to the character class [0-9], wich looks for a single character of any
+number between zero and nine. 
+The shortcut to look for non-digit character is \D. This is equal to the character class [^0-9], which looks for a single character that is not a number 
+between zero and nine. 
+ 
+We can also match whitespace using \s', wich is a lowercase s. This pattern not only matches whitespaces, but also carriage returns, tab, and new lone characters. 
+We can think of it as similar to the character class [\r\t\f\n\v].
+ We can also search for the oposite by using the uppercase char of the same pattern '\S' - [^\r\t\f\n\v]
+
+-- Sample using pattern for empty space. 
+let whiteSpace = "Whitespace. Whithespace wverywhere!"; 
+let spaceRegex  = /\s/g; 
+whiteSpace.match(spaceRegex);  // Retursn [" ", " "] 
+
+Recall that we use the plus sign '+' to look for one or more characters and the asterisk * to look for zero or more characters. 
+There are convenient but sometimes we want to match a certain ragne of patterns. 
+We can specify the lower and upper number of patters with quantity specifiers. 
+Quantity specifiers are used with curly brackets ({and}). 
+We put two numbers between the urly brackets, for the lower and upper of patterns. 
+
+-- Sample searching for a a pattern specified in a range of position using quantity specifiers.
+let a4 = "aaaah" ;
+let a2 = "aah" ; 
+let multipleA = /a{3,5}h/; 
+multipleA.test(a4);  // Returns true.
+multipleA.test(a2);  // Returns false.
+
+Sometimes the paterns we want to search for may have parts of it that may or may not exist. However, it may be important to check for them nonetheless. 
+We can specify the possible existence of an element with a question mark, ?. This checks for zero or one of the preceding elements. 
+	We can think of the symbols as saying the previous element are option 
+	
+-- Sample using ? char pattern 
+let american = "color"; 
+let british  = "colour"; 
+let rainbowRegex = /colou?r/; 
+rainbowRegex.test(american);  //Returns true.  
+rainbowRegex.test(british);   //Returns true.
+
+Look aheads are patterns that tell JS to look-ahead in our string to check for patterns further along. This can be useful when we want to search for multiple patterns 
+over the same string. 
+
+There are two kinds of lookaheads : Positive/negative . 
+
+A positive lookahead >> (?=...) 
+A negative lookahead >> (?!...) 
+
+A positive lookeahead, will look to make sure the element in the search pattern is there, but won't actually match it. 
+A negative lookahead will look to make sure the elemenet in the search patter is not there. 
+
+-- Sample using positive, negative lookahead 
+let quit  ="qu#; 
+let notquit = "qt"; 
+let quRegex = /q(?=u)/; 
+let qRegex = /q(?!u)/; 
+quit.match(quRegex);  //Returns ["q"]
+noquit.match(qRegex); //Returns ["q"] 
+
+Some patterns we search for will occur multiple times in a string. It is wasteful to manually repeat that regex. There is a  better way to specify when we have multiple
+repeat substrings in our string. 
+We can search for repeat substrings using capture groups. Parentheses, (and), are used to find repeat substrings. We put the regex of the pattern that will repeat
+in between the parentheses. 
+
+To specify where that repeat tring will appear, we  use a baclslask (\) and then a number. This number starts at 1 and increases with each additional capture group
+we use. And example would be '\1' to match the first group. 
+
+-- Sample using repeater matcher within a capture group 
+let repeatStr = "regex regex"; 
+let repeatRegex = (\w+)\s\1/; 
+repeatRegex.test(repeatStr);   //Returns true.
+repeatStr.match(repeatRegex);  //Returns ["regex regex", "regex"] 
+
+We can search and replace text in a string using '.replace()' method on a string. The inputs for replace i first the regex pattern we want for, 
+then the string to replace the match or a function to do something. 
+
+-- Sample using the replace method for a string 
+let wrongText = "The sky is silver"; 
+let silverRegex = /silver/; 
+wrongText.replace(silverRegex, "blue");   //Returns "The sky is blue"
+
+// Sample of a requirement of regex being generated. 
+	User story : 
+	Restrict Possible Usernames . Usernamesc are used everywhere on the internet. They are what give users a unique identity on their favorite sites. 
+	We need to check all the usernames in a database. Some simple rules for users to follow when creating their usernmae. 
+		1 - The only numbers in the username have to be at the end. 
+		2 - Username letters can be lowercase and uppercase. 
+		3 - Usernames have to be at least two characters along. A two-letters username can only use alphabet letter characters. 
+		
+	Usernames have to be at least two chracters long >> {2,} 
+	A two-letter username can only use alphabet letter characters. >> ^[a-z] 
+	
+	Final regex  : /^[a-z]{2,}\d*$/i 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
