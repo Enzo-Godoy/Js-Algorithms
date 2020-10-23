@@ -81,104 +81,75 @@ let alphabetRegexV2 = /\w/g;
 let result = quoteSample.match(alphabetRegexV2).length; 
 
 -- Sample test oposite letter string, number. 
-let 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let quoteSample = "The five boxing wizards jump quickly."; 
+let nonAlphabetRegex = /\W/g; 
+let result = quoteSample.match(nonAlphabetRegex).length; 
+
+-- Sample test number pattern char 
+let numString = "Your sandiwch will be  $5.00"; 
+let numRegex = /\d/g; 
+let result = numString.match(numRegex).length; 
+
+-- Sample test oposite number find 
+let numString = "Your sandwich will be $5.00#; 
+let noNumRegex = /\D/g; 
+let result = numString.match(noNumRegex).length; 
+
+-- Sample test pass_usernames 
+let username = "JackOfAllTrades"; 
+let userCheck = /[a-z]{2,}\d*$/i; 
+let result = userCheck.test(username); 
+
+-- Sample test match whitespace 
+let sample = "Whitespace is important in separating words"; 
+let countWhiteSpace = /\s/g; 
+let result = sample.match(countWhiteSpace); 
+
+-- Sample test opposite match whitespaces 
+let sample ="Whitespace is important in separating words."; 
+let countNonWhiteSpace = /\S/g; 
+let result = sample.match(countNonWhiteSpace); 
+
+-- Sample test nums match chart 
+let ohStr = "Ohh no"; 
+let ohRegex = /Oh{3,6}\sno/; 
+let result = ohRegex.test(ohStr); 
+
+-- Sample test nums match chart without limit 
+let haStr = "Hazzzah"; 
+let haRegex = /Haz{4,}ah/; 
+let result = haRegex.test(haStr); 
+
+-- Sample test nums match chart specified. 
+let timStr = "Timmmmber"; 
+let timRegex = /Timñ4}ber/i; 
+let result = timRegex.test(timStr); 
+
+-- Sample test nums match chart might 
+let favWord = "favorite"; 
+let favRegex = /favour?rite/; 
+let result = favRegex.test(favWord); 
+
+-- Sample lookahead positive, negative. 
+let sampleWord = "astronaut"; 
+let pwRegex = /(?=\w{5,})(?=\D*\d{2})/; 
+let result = rwRegex.test(sampleWord); 
+
+-- Sample test reuse patterns  
+let repeatNum = "42 42 42"; 
+let reRegex = /^(d+)\s\1\s\1$/; 
+let result = reRegex.test(repeatNum); 
+
+-- Sample test capture replace method 
+let huhText = "This sandwich is good."; 
+let fixRegex = /good/; 
+let replaceText = "okey-dokey"; 
+let result = huhText.replace(fixRegex, replaceText); 
+
+-- Sample test remove whitesáces 
+let hello = "hello, World!"; 
+let wsRegex = /^\s+|\s+$/g; 
+let result = hello.replace(wsRegex, ''); 
 
 
 
