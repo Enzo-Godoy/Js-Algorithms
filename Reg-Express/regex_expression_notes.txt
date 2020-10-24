@@ -235,36 +235,3 @@ wrongText.replace(silverRegex, "blue");   //Returns "The sky is blue"
 	
 	Final regex  : /^[a-z]{2,}\d*$/i 
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
